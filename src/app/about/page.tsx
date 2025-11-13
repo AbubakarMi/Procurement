@@ -87,14 +87,14 @@ export default function AboutPage() {
           {otherStaff.map((person, index) => {
             const image = staffImages.find(img => img.id === `staff-${person.id}`) || staffImages[index % staffImages.length];
             return (
-              <Card key={person.id} className="group relative overflow-hidden shadow-md transition-shadow hover:shadow-xl">
+              <Card key={person.id} className="overflow-hidden shadow-md transition-shadow hover:shadow-xl">
                 {image && (
                   <Image
                     src={image.imageUrl}
                     alt={image.description}
                     width={400}
                     height={400}
-                    className="w-full h-64 object-cover transition-transform group-hover:scale-105"
+                    className="w-full h-64 object-cover"
                     data-ai-hint={image.imageHint}
                   />
                 )}
@@ -102,11 +102,6 @@ export default function AboutPage() {
                   <CardTitle className="text-primary text-xl">{person.name}</CardTitle>
                   <p className="text-foreground/80">{person.role}</p>
                 </CardHeader>
-                <div className="absolute inset-0 bg-accent/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                  <a href={`mailto:${person.email}`} className="text-accent-foreground flex items-center text-lg">
-                    <Mail className="mr-2 h-5 w-5" /> Contact
-                  </a>
-                </div>
               </Card>
             );
           })}
