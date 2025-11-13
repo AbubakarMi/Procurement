@@ -184,40 +184,66 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Quick Stats */}
-      <section className="py-24 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground font-headline mb-4">
-              Our Impact by the Numbers
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Delivering measurable results and transparent governance across our operations
-            </p>
-          </div>
+      {/* Quick Stats - World Class Design */}
+      <section className="py-32 bg-white relative overflow-hidden">
+        {/* Subtle background pattern */}
+        <div className="absolute inset-0 opacity-[0.02]">
+          <div className="absolute inset-0" style={{
+            backgroundImage: 'radial-gradient(circle at 2px 2px, #E34234 1px, transparent 0)',
+            backgroundSize: '48px 48px'
+          }}></div>
+        </div>
 
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-            {stats.map((stat, index) => (
-              <Card
-                key={stat.label}
-                className="relative overflow-hidden text-center border-l-4 border-l-primary bg-white hover:shadow-xl transition-all duration-300 group"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <CardHeader className="pb-4">
-                  <div className="mx-auto mb-4 p-4 rounded-xl bg-primary/10 w-fit group-hover:bg-primary/20 transition-colors duration-300">
-                    {statIcons[stat.label as keyof typeof statIcons]}
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-7xl mx-auto">
+            {/* Minimalist Header */}
+            <div className="mb-20 text-center">
+              <div className="flex items-center justify-center gap-6 mb-8">
+                <div className="h-px w-12 bg-primary"></div>
+                <span className="text-xs font-bold text-primary uppercase tracking-[0.2em]">Performance Metrics</span>
+                <div className="h-px w-12 bg-primary"></div>
+              </div>
+              <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground font-headline mb-4 tracking-tight">
+                Impact By Numbers
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                Measurable results across procurement and project delivery
+              </p>
+            </div>
+
+            {/* Premium Stats Layout */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-border">
+              {stats.map((stat, index) => (
+                <article
+                  key={stat.label}
+                  className={`group relative bg-white p-12 text-center hover:bg-primary/5 transition-all duration-500 ${
+                    index !== stats.length - 1 ? 'md:border-r border-b md:border-b-0 border-border' : ''
+                  }`}
+                >
+                  {/* Value - Large and Bold */}
+                  <div className="mb-6">
+                    <p className="text-7xl md:text-8xl font-bold text-foreground group-hover:text-primary transition-colors leading-none">
+                      {stat.value}
+                    </p>
                   </div>
-                  <CardTitle className="text-primary text-base font-semibold uppercase tracking-wide">{stat.label}</CardTitle>
-                </CardHeader>
-                <CardContent className="pb-6">
-                  <p className="text-5xl md:text-6xl font-extrabold text-foreground">
-                    {stat.value}
-                  </p>
-                </CardContent>
 
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-              </Card>
-            ))}
+                  {/* Divider Line */}
+                  <div className="w-16 h-px bg-primary/30 mx-auto mb-6 group-hover:w-24 group-hover:bg-primary transition-all duration-500"></div>
+
+                  {/* Label */}
+                  <p className="text-sm font-bold text-muted-foreground uppercase tracking-[0.15em]">
+                    {stat.label}
+                  </p>
+
+                  {/* Icon - Subtle */}
+                  <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <div className="p-2 bg-primary/10 rounded-lg">
+                      {statIcons[stat.label as keyof typeof statIcons]}
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -485,50 +511,58 @@ export default function Home() {
       </section>
       
       {/* Quick Links / Resources */}
-      <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-accent/5" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(227,66,52,0.1),transparent_50%)]" />
+      <section className="py-32 bg-white relative overflow-hidden">
+        {/* Subtle background pattern */}
+        <div className="absolute inset-0 opacity-[0.02]">
+          <div className="absolute inset-0" style={{
+            backgroundImage: 'radial-gradient(circle at 2px 2px, #E34234 1px, transparent 0)',
+            backgroundSize: '48px 48px'
+          }}></div>
+        </div>
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4 font-headline">
-              Quick Links & Resources
+          {/* Minimalist Header */}
+          <div className="mb-20">
+            <div className="flex items-center gap-6 mb-8">
+              <div className="h-px w-12 bg-primary"></div>
+              <span className="text-xs font-bold text-primary uppercase tracking-[0.2em]">Resources</span>
+            </div>
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground font-headline mb-4 tracking-tight">
+              Essential Documents
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Access essential documents, policies, and templates for procurement processes
+            <p className="text-xl text-muted-foreground max-w-2xl">
+              Access templates, policies, and reports for procurement processes
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3 max-w-5xl mx-auto">
-            {quickLinks.map((link, index) => (
-              <Card
+          {/* Clean Resource Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {quickLinks.map((link) => (
+              <Link
                 key={link.title}
-                className="relative group text-center overflow-hidden border-2 border-border hover:border-primary/50 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 bg-card"
-                style={{ animationDelay: `${index * 100}ms` }}
+                href={link.href}
+                className="group"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="absolute top-0 right-0 w-40 h-40 bg-primary/5 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700" />
-
-                <CardHeader className="relative z-10 pb-4">
-                  <div className="mx-auto mb-6 p-6 rounded-2xl bg-gradient-to-br from-primary/10 via-primary/5 to-accent/10 group-hover:from-primary/20 group-hover:to-accent/20 transition-all duration-300 w-fit group-hover:scale-110 group-hover:rotate-6 shadow-lg">
-                    {quickLinkIcons[link.title as keyof typeof quickLinkIcons]}
+                <article className="h-full bg-white border border-border hover:border-primary/50 transition-all duration-500 overflow-hidden p-8">
+                  {/* Icon */}
+                  <div className="mb-6">
+                    <div className="p-4 bg-primary/10 rounded-xl w-fit group-hover:bg-primary/20 transition-colors">
+                      {quickLinkIcons[link.title as keyof typeof quickLinkIcons]}
+                    </div>
                   </div>
-                  <CardTitle className="text-primary text-xl font-bold group-hover:text-accent transition-colors duration-300">
+
+                  {/* Title */}
+                  <h3 className="text-2xl font-bold text-foreground font-headline mb-4 group-hover:text-primary transition-colors">
                     {link.title}
-                  </CardTitle>
-                </CardHeader>
+                  </h3>
 
-                <CardContent className="relative z-10 pb-8">
-                  <Button asChild variant="outline" size="lg" className="w-full group/btn border-2 border-primary/20 hover:border-primary hover:bg-primary hover:text-white transition-all duration-300 shadow-md hover:shadow-lg">
-                    <Link href={link.href} className="flex items-center justify-center gap-2">
-                      Go to Page
-                      <ArrowRight className="h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
-                    </Link>
-                  </Button>
-                </CardContent>
-
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-accent to-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center" />
-              </Card>
+                  {/* CTA */}
+                  <div className="flex items-center gap-2 text-primary text-sm font-bold uppercase tracking-wider">
+                    <span>Access Now</span>
+                    <ArrowRight className="h-4 w-4 group-hover:translate-x-2 transition-transform" />
+                  </div>
+                </article>
+              </Link>
             ))}
           </div>
         </div>
