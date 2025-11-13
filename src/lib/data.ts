@@ -67,10 +67,14 @@ export const staff = [
 ];
 
 export const projects = [
-  { id: 1, title: 'Kano-Dawakau Road Expansion', status: 'In Progress', region: 'Kano', startDate: '2023-01-15', completionDate: '2025-06-30', progress: 60, location: { lat: 11.95, lng: 8.5 } },
-  { id: 2, title: 'Gwale General Hospital', status: 'Completed', region: 'Gwale', startDate: '2022-03-01', completionDate: '2024-05-01', progress: 100, location: { lat: 12.007, lng: 8.49 } },
-  { id: 3, title: 'Tiga Dam Water Treatment Plant', status: 'Planning', region: 'Tiga', startDate: '2024-08-01', completionDate: '2026-12-31', progress: 10, location: { lat: 11.45, lng: 8.43 } },
-  { id: 4, title: 'Kano Economic City', status: 'In Progress', region: 'Kano', startDate: '2023-05-20', completionDate: '2025-10-15', progress: 45, location: { lat: 12.05, lng: 8.55 } },
+  { id: 1, title: 'Kano-Dawakau Road Expansion', status: 'In Progress', region: 'Kano', startDate: '2023-01-15', completionDate: '2025-06-30', progress: 60, location: { lat: 11.9850, lng: 8.5167 } },
+  { id: 2, title: 'Gwale General Hospital', status: 'Completed', region: 'Gwale', startDate: '2022-03-01', completionDate: '2024-05-01', progress: 100, location: { lat: 12.0200, lng: 8.5100 } },
+  { id: 3, title: 'Tiga Dam Water Treatment Plant', status: 'Planning', region: 'Tiga', startDate: '2024-08-01', completionDate: '2026-12-31', progress: 10, location: { lat: 11.4500, lng: 8.4300 } },
+  { id: 4, title: 'Kano Economic City', status: 'In Progress', region: 'Kano', startDate: '2023-05-20', completionDate: '2025-10-15', progress: 45, location: { lat: 11.9700, lng: 8.5500 } },
+  { id: 5, title: 'Nassarawa Market Reconstruction', status: 'In Progress', region: 'Nassarawa', startDate: '2023-09-01', completionDate: '2025-03-30', progress: 75, location: { lat: 11.9950, lng: 8.5430 } },
+  { id: 6, title: 'Fagge Water Supply Network', status: 'Completed', region: 'Fagge', startDate: '2022-06-15', completionDate: '2024-02-28', progress: 100, location: { lat: 12.0100, lng: 8.5350 } },
+  { id: 7, title: 'Dala Hill Tourism Development', status: 'Planning', region: 'Dala', startDate: '2024-10-01', completionDate: '2026-09-30', progress: 5, location: { lat: 11.9800, lng: 8.5000 } },
+  { id: 8, title: 'Sabon Gari New City Gate', status: 'In Progress', region: 'Sabon Gari', startDate: '2024-01-10', completionDate: '2025-08-15', progress: 35, location: { lat: 12.0300, lng: 8.5600 } },
 ];
 
 export const faqs = [

@@ -1,0 +1,75 @@
+================================================
+   HOW TO GET AND ADD GOOGLE MAPS API KEY
+================================================
+
+STEP 1: GO TO GOOGLE CLOUD CONSOLE
+-----------------------------------
+Open your browser and go to:
+https://console.cloud.google.com/
+
+Login with your Google account
+
+
+STEP 2: CREATE A PROJECT
+-------------------------
+1. Click "Select a project" at the top
+2. Click "NEW PROJECT"
+3. Name it: "Kano Ministry Website"
+4. Click "CREATE"
+
+
+STEP 3: ENABLE MAPS API
+------------------------
+1. In the left menu, click "APIs & Services" > "Library"
+2. Search for "Maps JavaScript API"
+3. Click on it
+4. Click "ENABLE"
+
+
+STEP 4: CREATE API KEY
+-----------------------
+1. Go to "APIs & Services" > "Credentials"
+2. Click "+ CREATE CREDENTIALS"
+3. Select "API key"
+4. Copy the API key that appears
+   (It will look like: AIzaSyC..............................)
+
+
+STEP 5: ADD KEY TO PROJECT
+---------------------------
+1. Open the file: .env.local (in the project root folder)
+2. Replace the empty line with your key:
+
+   NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=AIzaSyC......your_key_here
+
+3. Save the file
+
+
+STEP 6: RESTART SERVER
+-----------------------
+Stop your development server (press Ctrl+C in terminal)
+Then restart it:
+
+   npm run dev
+
+
+STEP 7: CHECK MAPS
+-------------------
+Open your browser and go to:
+- http://localhost:9002/contact (should show ministry location)
+- http://localhost:9002/projects (should show project markers)
+
+
+================================================
+IMPORTANT NOTES:
+================================================
+
+- Google provides $200 FREE credit per month
+- This is enough for most websites
+- Your API key is safe (it's in .gitignore)
+- Maps show: Ministry location and project locations
+
+If you need help, the map components will show
+instructions on the page itself.
+
+================================================

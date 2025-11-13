@@ -1,67 +1,119 @@
 'use client';
 
-import { useState } from 'react';
-import { APIProvider, Map, AdvancedMarker, InfoWindow } from '@vis.gl/react-google-maps';
-
-// IMPORTANT: You need to add your Google Maps API key to your environment variables.
-// Create a .env.local file in the root of your project and add the following line:
-// NEXT_PUBLIC_GOOGLE_MAPS_API_KEY="YOUR_API_KEY"
-const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
+import { useEffect } from 'react';
+import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 
 type Project = {
   id: number;
   title: string;
   location: { lat: number; lng: number };
+  status?: string;
+  progress?: number;
 };
 
 type ProjectMapProps = {
   projects: Project[];
 };
 
-export default function ProjectMap({ projects }: ProjectMapProps) {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+// Create colored marker icons based on project status
+const createProjectIcon = (status?: string) => {
+  const color =
+    status === 'Completed' ? '#10b981' :
+    status === 'In Progress' ? '#E34234' :
+    '#f59e0b';
 
-  if (!API_KEY) {
-    return (
-      <div className="flex items-center justify-center h-full bg-muted">
-        <div className="text-center text-foreground/80">
-          <p className="font-semibold text-destructive">Google Maps API Key is missing.</p>
-          <p className="text-sm">Please configure NEXT_PUBLIC_GOOGLE_MAPS_API_KEY in your .env.local file.</p>
-        </div>
+  const borderColor =
+    status === 'Completed' ? '#059669' :
+    status === 'In Progress' ? '#972D28' :
+    '#d97706';
+
+  return L.divIcon({
+    className: 'custom-project-marker',
+    html: `
+      <div style="
+        background: ${color};
+        width: 28px;
+        height: 28px;
+        border-radius: 50% 50% 50% 0;
+        transform: rotate(-45deg);
+        border: 2px solid ${borderColor};
+        box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+      ">
+        <div style="
+          width: 10px;
+          height: 10px;
+          background: white;
+          border-radius: 50%;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        "></div>
       </div>
-    );
-  }
+    `,
+    iconSize: [28, 28],
+    iconAnchor: [14, 28],
+    popupAnchor: [0, -28],
+  });
+};
 
-  const mapCenter = { lat: 12.0022, lng: 8.5920 }; // Centered on Kano, Nigeria
+// Component to fix map loading issues
+function MapInitializer() {
+  const map = useMap();
+
+  useEffect(() => {
+    setTimeout(() => {
+      map.invalidateSize();
+    }, 100);
+  }, [map]);
+
+  return null;
+}
+
+export default function ProjectMap({ projects }: ProjectMapProps) {
+  const mapCenter: [number, number] = [12.0022, 8.5920]; // Centered on Kano, Nigeria
 
   return (
-    <APIProvider apiKey={API_KEY}>
-      <Map
-        defaultCenter={mapCenter}
-        defaultZoom={9}
-        mapId="ministry-map"
-        gestureHandling={'greedy'}
-        disableDefaultUI={true}
-      >
-        {projects.map((project) => (
-          <AdvancedMarker
-            key={project.id}
-            position={project.location}
-            onClick={() => setSelectedProject(project)}
-          />
-        ))}
-
-        {selectedProject && (
-          <InfoWindow
-            position={selectedProject.location}
-            onCloseClick={() => setSelectedProject(null)}
-          >
-            <div className="p-2">
-              <h3 className="font-bold text-primary">{selectedProject.title}</h3>
+    <MapContainer
+      center={mapCenter}
+      zoom={11}
+      scrollWheelZoom={true}
+      style={{ height: '100%', width: '100%', borderRadius: '8px' }}
+    >
+      <MapInitializer />
+      <TileLayer
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+      {projects.map((project) => (
+        <Marker
+          key={project.id}
+          position={[project.location.lat, project.location.lng]}
+          icon={createProjectIcon(project.status)}
+        >
+          <Popup>
+            <div className="p-2 min-w-[180px]">
+              <h3 className="font-bold text-primary mb-2 text-sm">{project.title}</h3>
+              {project.status && (
+                <span className={`inline-block px-2 py-1 rounded-full text-xs font-semibold mb-2 ${
+                  project.status === 'Completed' ? 'bg-green-100 text-green-800' :
+                  project.status === 'In Progress' ? 'bg-blue-100 text-blue-800' :
+                  'bg-yellow-100 text-yellow-800'
+                }`}>
+                  {project.status}
+                </span>
+              )}
+              {project.progress !== undefined && (
+                <p className="text-xs text-muted-foreground mt-1">
+                  Progress: <span className="font-semibold text-primary">{project.progress}%</span>
+                </p>
+              )}
             </div>
-          </InfoWindow>
-        )}
-      </Map>
-    </APIProvider>
+          </Popup>
+        </Marker>
+      ))}
+    </MapContainer>
   );
 }

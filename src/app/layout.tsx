@@ -8,6 +8,9 @@ import { Providers } from '@/components/providers';
 export const metadata: Metadata = {
   title: 'Ministry for Public Procurement, Project Monitoring and Evaluation',
   description: 'Transparent Procurement & Efficient Project Monitoring',
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({
