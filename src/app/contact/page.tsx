@@ -10,7 +10,7 @@ export default function ContactPage() {
   return (
     <div className="container mx-auto px-4 py-12 md:py-16">
       <div className="text-center mb-12">
-        <p className="text-sm text-primary mb-2">Home &gt; Contact Us</p>
+        <p className="text-sm text-primary mb-2">Home > Contact Us</p>
         <h1 className="text-4xl font-bold tracking-tight text-primary md:text-5xl font-headline">
           <Balancer>Get In Touch</Balancer>
         </h1>
@@ -111,7 +111,7 @@ export default function ContactPage() {
             <div className="aspect-w-16 aspect-h-9">
               {/* Note: This is a static image of a map. For a real interactive map, you'd need Google Maps API. */}
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3305.720193108603!2d-118.24584068478466!3d34.05223498060699!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c634251ab351%3A0x34c449326e1c9533!2sLos%20Angeles%20City%20Hall!5e0!3m2!1sen!2sus!4v1626966141381!5m2!1sen!2sus"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3932.723139808621!2d8.542211975908233!3d11.99441113554032!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x11ae816793a846f3%3A0x805274154e1b59c7!2s21%20Magaji%20Rumfa%20Rd%2C%20Nassarawa%2C%20Kano%20700241%2C%20Kano%2C%20Nigeria!5e0!3m2!1sen!2sus!4v1719530444318!5m2!1sen!2sus"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

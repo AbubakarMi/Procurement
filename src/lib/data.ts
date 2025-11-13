@@ -67,10 +67,10 @@ export const staff = [
 ];
 
 export const projects = [
-  { id: 1, title: 'Coastal Highway Expansion', status: 'In Progress', region: 'East', startDate: '2023-01-15', completionDate: '2025-06-30', progress: 60, location: { lat: 34.0522, lng: -118.2437 } },
-  { id: 2, title: 'Northwood Public School', status: 'Completed', region: 'North', startDate: '2022-03-01', completionDate: '2024-05-01', progress: 100, location: { lat: 34.1522, lng: -118.3437 } },
-  { id: 3, title: 'Green Valley Water Treatment', status: 'Planning', region: 'West', startDate: '2024-08-01', completionDate: '2026-12-31', progress: 10, location: { lat: 33.9522, lng: -118.1437 } },
-  { id: 4, title: 'South Central Community Hospital', status: 'In Progress', region: 'South', startDate: '2023-05-20', completionDate: '2025-10-15', progress: 45, location: { lat: 33.8522, lng: -118.4437 } },
+  { id: 1, title: 'Kano-Dawakau Road Expansion', status: 'In Progress', region: 'Kano', startDate: '2023-01-15', completionDate: '2025-06-30', progress: 60, location: { lat: 11.95, lng: 8.5 } },
+  { id: 2, title: 'Gwale General Hospital', status: 'Completed', region: 'Gwale', startDate: '2022-03-01', completionDate: '2024-05-01', progress: 100, location: { lat: 12.007, lng: 8.49 } },
+  { id: 3, title: 'Tiga Dam Water Treatment Plant', status: 'Planning', region: 'Tiga', startDate: '2024-08-01', completionDate: '2026-12-31', progress: 10, location: { lat: 11.45, lng: 8.43 } },
+  { id: 4, title: 'Kano Economic City', status: 'In Progress', region: 'Kano', startDate: '2023-05-20', completionDate: '2025-10-15', progress: 45, location: { lat: 12.05, lng: 8.55 } },
 ];
 
 export const faqs = [

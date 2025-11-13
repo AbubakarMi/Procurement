@@ -32,7 +32,7 @@ export default function ProjectMap({ projects }: ProjectMapProps) {
     );
   }
 
-  const mapCenter = { lat: 34.052235, lng: -118.243683 }; // Centered on Los Angeles for demo
+  const mapCenter = { lat: 12.0022, lng: 8.5920 }; // Centered on Kano, Nigeria
 
   return (
     <APIProvider apiKey={API_KEY}>
