@@ -50,23 +50,35 @@ const quickLinkIcons = {
 export default function Home() {
   const newsImages = PlaceHolderImages.filter((img) => img.id.startsWith('news'));
   const tenderImages = PlaceHolderImages.filter((img) => img.id.startsWith('tender'));
+  const heroImage = PlaceHolderImages.find((img) => img.id === 'hero-home');
 
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="bg-card py-20 md:py-32">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-primary md:text-6xl font-headline">
+      <section className="relative bg-card h-[50vh] md:h-[60vh] flex items-center justify-center text-white">
+        {heroImage && (
+          <Image
+            src={heroImage.imageUrl}
+            alt={heroImage.description}
+            fill
+            className="object-cover"
+            data-ai-hint={heroImage.imageHint}
+            priority
+          />
+        )}
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="relative container mx-auto px-4 text-center">
+          <h1 className="text-4xl font-bold tracking-tight text-white md:text-6xl font-headline">
             <Balancer>Transparent Procurement & Efficient Project Monitoring</Balancer>
           </h1>
-          <p className="mt-4 max-w-2xl mx-auto text-lg text-foreground md:text-xl">
+          <p className="mt-4 max-w-2xl mx-auto text-lg text-white/90 md:text-xl">
             Building a brighter future for our state through accountability and progress in public works.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
             <Button asChild size="lg">
               <Link href="/complaints">Submit Complaint</Link>
             </Button>
-            <Button asChild size="lg" variant="outline">
+            <Button asChild size="lg" variant="outline" className="bg-transparent text-white border-white hover:bg-white hover:text-primary">
               <Link href="/projects">View Projects</Link>
             </Button>
           </div>
