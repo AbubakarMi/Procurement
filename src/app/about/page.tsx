@@ -3,6 +3,7 @@ import Balancer from 'react-wrap-balancer';
 import { Mail } from 'lucide-react';
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { staff } from '@/lib/data';
@@ -276,13 +277,6 @@ export default function AboutPage() {
                     />
                     {/* Gradient overlay for better text contrast */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-
-                    {/* Top Badge */}
-                    <div className="absolute top-4 left-4">
-                      <div className="px-3 py-1 bg-primary/90 backdrop-blur-sm rounded-full">
-                        <span className="text-xs font-semibold text-white">Team Member</span>
-                      </div>
-                    </div>
                   </div>
                 )}
 
@@ -301,35 +295,6 @@ export default function AboutPage() {
                       {person.role}
                     </p>
                   </div>
-
-                  {/* Contact Card */}
-                  <div className="pt-4 border-t border-border">
-                    <div className="flex items-center gap-3 group/email">
-                      <div className="p-2 bg-primary/10 rounded-lg group-hover/email:bg-primary/20 transition-colors">
-                        <Mail className="h-4 w-4 text-primary" />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <p className="text-xs text-muted-foreground mb-0.5">Email</p>
-                        <a
-                          href={`mailto:${person.email}`}
-                          className="text-sm font-medium text-foreground hover:text-primary transition-colors truncate block"
-                        >
-                          {person.email}
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Action Button */}
-                  <Button
-                    variant="outline"
-                    className="w-full group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all"
-                    asChild
-                  >
-                    <a href={`mailto:${person.email}`}>
-                      Contact {person.name.split(' ')[0]}
-                    </a>
-                  </Button>
                 </CardContent>
 
                 {/* Decorative Element */}

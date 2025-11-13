@@ -51,13 +51,13 @@
     {
       "id": "news-1",
       "description": "An image related to a news article about a new bridge.",
-      "imageUrl": "https://images.unsplash.com/photo-1569925457326-59b1c3611227?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxicmlkZ2UlMjBjb25zdHJ1Y3Rpb258ZW58MHx8fHwxNzYyOTY5NTQ4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/commisioner11.jpeg",
       "imageHint": "bridge construction"
     },
     {
       "id": "news-2",
       "description": "An image related to a news article about rural electrification.",
-      "imageUrl": "https://images.unsplash.com/photo-1552965734-5b9e868808b6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxwb3dlciUyMGxpbmVzfGVufDB8fHx8MTc2MzAyOTM2NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/commisioner3.jpeg",
       "imageHint": "power lines"
     },
     {

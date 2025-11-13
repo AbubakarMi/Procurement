@@ -41,7 +41,6 @@ const statIcons = {
   Projects: <Briefcase className="h-8 w-8 text-primary" />,
   Tenders: <FileText className="h-8 w-8 text-primary" />,
   Complaints: <MessageSquare className="h-8 w-8 text-primary" />,
-  Staff: <Users className="h-8 w-8 text-primary" />,
 };
 
 const quickLinkIcons = {
@@ -186,9 +185,8 @@ export default function Home() {
       </section>
 
       {/* Quick Stats */}
-      <section className="py-24 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-card to-background" />
-        <div className="container mx-auto px-4 relative z-10">
+      <section className="py-24 bg-background">
+        <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground font-headline mb-4">
               Our Impact by the Numbers
@@ -198,29 +196,26 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {stats.map((stat, index) => (
               <Card
                 key={stat.label}
-                className="relative overflow-hidden text-center border-2 border-border shadow-lg hover:shadow-2xl transition-all duration-500 group hover:scale-105 hover:-translate-y-2 bg-gradient-to-br from-card via-card to-primary/5"
+                className="relative overflow-hidden text-center border-l-4 border-l-primary bg-white hover:shadow-xl transition-all duration-300 group"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700" />
-
-                <CardHeader className="relative z-10">
-                  <div className="mx-auto mb-6 p-4 rounded-2xl bg-gradient-to-br from-primary/10 to-accent/10 group-hover:from-primary/20 group-hover:to-accent/20 transition-all duration-300 w-fit group-hover:scale-110 group-hover:rotate-3">
+                <CardHeader className="pb-4">
+                  <div className="mx-auto mb-4 p-4 rounded-xl bg-primary/10 w-fit group-hover:bg-primary/20 transition-colors duration-300">
                     {statIcons[stat.label as keyof typeof statIcons]}
                   </div>
-                  <CardTitle className="text-primary text-lg font-semibold">{stat.label}</CardTitle>
+                  <CardTitle className="text-primary text-base font-semibold uppercase tracking-wide">{stat.label}</CardTitle>
                 </CardHeader>
-                <CardContent className="relative z-10 pb-8">
-                  <p className="text-5xl md:text-6xl font-extrabold bg-gradient-to-br from-foreground to-foreground/70 bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300">
+                <CardContent className="pb-6">
+                  <p className="text-5xl md:text-6xl font-extrabold text-foreground">
                     {stat.value}
                   </p>
                 </CardContent>
 
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-accent to-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </Card>
             ))}
           </div>
@@ -228,11 +223,14 @@ export default function Home() {
       </section>
 
       {/* Latest News */}
-      <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-card via-background to-card" />
-        <div className="container mx-auto px-4 relative z-10">
+      <section className="py-24 bg-card">
+        <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4 font-headline">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-4">
+              <div className="h-2 w-2 rounded-full bg-primary animate-pulse"></div>
+              <span className="text-sm font-semibold text-primary">News & Updates</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 font-headline">
               Latest News & Updates
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -253,34 +251,52 @@ export default function Home() {
                 return (
                 <CarouselItem key={item.id} className="pl-4 md:basis-1/2 lg:basis-1/3">
                   <div className="h-full">
-                    <Card className="flex flex-col h-full group overflow-hidden border-2 border-border hover:border-primary/50 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] hover:-translate-y-1 bg-card">
+                    <Card className="flex flex-col h-full group overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-300 bg-white">
                       <CardHeader className="p-0 relative overflow-hidden">
-                        <div className="relative h-56 overflow-hidden">
+                        <div className="relative h-64 overflow-hidden">
                           <Image
                             src={image.imageUrl}
                             alt={image.description}
                             width={600}
                             height={400}
-                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                             data-ai-hint={image.imageHint}
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                          {/* Gradient overlay on image for text readability */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+
+                          {/* Date badge on image */}
+                          <div className="absolute bottom-4 left-4">
+                            <Badge className="bg-white/90 text-primary hover:bg-white shadow-lg border-0 backdrop-blur-sm">
+                              {item.date}
+                            </Badge>
+                          </div>
                         </div>
                         <div className="absolute top-4 right-4">
-                          <Badge className="bg-primary text-white shadow-lg">News</Badge>
+                          <div className="h-10 w-10 rounded-full bg-primary/90 backdrop-blur-sm flex items-center justify-center">
+                            <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                            </svg>
+                          </div>
                         </div>
                       </CardHeader>
                       <CardContent className="flex-grow p-6">
-                        <CardTitle className="text-primary text-xl mb-3 group-hover:text-accent transition-colors duration-300 line-clamp-2">
+                        <div className="flex items-center gap-2 mb-3">
+                          <div className="h-1 w-8 bg-primary"></div>
+                          <div className="h-1 w-4 bg-primary/50"></div>
+                        </div>
+                        <CardTitle className="text-foreground text-xl mb-3 font-headline leading-tight line-clamp-2 group-hover:text-primary transition-colors duration-300">
                           {item.title}
                         </CardTitle>
-                        <CardDescription className="text-base line-clamp-3">{item.snippet}</CardDescription>
+                        <CardDescription className="text-base text-muted-foreground line-clamp-3 leading-relaxed">
+                          {item.snippet}
+                        </CardDescription>
                       </CardContent>
-                      <CardFooter className="p-6 pt-0">
-                        <Button variant="link" asChild className="p-0 text-primary group-hover:text-accent transition-colors h-auto font-semibold">
-                          <Link href={`/news#news-${item.id}`} className="flex items-center gap-2 group">
-                            Read More
-                            <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      <CardFooter className="p-6 pt-0 border-t">
+                        <Button variant="ghost" asChild className="w-full justify-between text-primary hover:text-white hover:bg-primary transition-all">
+                          <Link href={`/news#news-${item.id}`} className="flex items-center gap-2">
+                            <span className="font-semibold">Read Full Story</span>
+                            <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                           </Link>
                         </Button>
                       </CardFooter>
@@ -289,8 +305,8 @@ export default function Home() {
                 </CarouselItem>
               )})}
             </CarouselContent>
-            <CarouselPrevious className="hidden md:flex -left-12 h-12 w-12 border-2 border-primary/20 hover:border-primary hover:bg-primary hover:text-white" />
-            <CarouselNext className="hidden md:flex -right-12 h-12 w-12 border-2 border-primary/20 hover:border-primary hover:bg-primary hover:text-white" />
+            <CarouselPrevious className="hidden md:flex -left-12 h-12 w-12 border-2 bg-white hover:bg-primary hover:text-white hover:border-primary transition-all shadow-md" />
+            <CarouselNext className="hidden md:flex -right-12 h-12 w-12 border-2 bg-white hover:bg-primary hover:text-white hover:border-primary transition-all shadow-md" />
           </Carousel>
         </div>
       </section>

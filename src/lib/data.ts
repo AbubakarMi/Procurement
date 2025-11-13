@@ -13,7 +13,6 @@ export const stats = [
   { label: 'Projects', value: '150+' },
   { label: 'Tenders', value: '320+' },
   { label: 'Complaints', value: '98%' },
-  { label: 'Staff', value: '500+' },
 ];
 
 export const complaintStats = [
