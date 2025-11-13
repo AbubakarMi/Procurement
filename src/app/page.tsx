@@ -222,161 +222,264 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Latest News */}
-      <section className="py-24 bg-card">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-4">
-              <div className="h-2 w-2 rounded-full bg-primary animate-pulse"></div>
-              <span className="text-sm font-semibold text-primary">News & Updates</span>
+      {/* Latest News - Ultra Premium World Class Design */}
+      <section className="py-32 bg-white relative overflow-hidden">
+        {/* Subtle background pattern */}
+        <div className="absolute inset-0 opacity-[0.02]">
+          <div className="absolute inset-0" style={{
+            backgroundImage: 'radial-gradient(circle at 2px 2px, #E34234 1px, transparent 0)',
+            backgroundSize: '48px 48px'
+          }}></div>
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          {/* Minimalist Header */}
+          <div className="mb-20">
+            <div className="flex items-center gap-6 mb-8">
+              <div className="h-px w-12 bg-primary"></div>
+              <span className="text-xs font-bold text-primary uppercase tracking-[0.2em]">Latest Updates</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 font-headline">
-              Latest News & Updates
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground font-headline mb-4 tracking-tight">
+              News & Announcements
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Stay informed with the latest developments in procurement and public projects
+            <p className="text-xl text-muted-foreground max-w-2xl">
+              Stay informed about the latest developments and initiatives
             </p>
           </div>
 
-          <Carousel
-            opts={{
-              align: 'start',
-              loop: true,
-            }}
-            className="w-full max-w-xs sm:max-w-xl md:max-w-3xl lg:max-w-5xl xl:max-w-7xl mx-auto"
-          >
-            <CarouselContent className="-ml-4">
-              {news.slice(0, 5).map((item, index) => {
+          {/* Premium Grid Layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-8">
+            {/* Large Featured Story - Takes 8 columns */}
+            {news.slice(0, 1).map((item) => {
+              const image = newsImages.find(img => img.id === `news-${item.id}`) || newsImages[0];
+              return (
+                <Link
+                  key={item.id}
+                  href={`/news#news-${item.id}`}
+                  className="lg:col-span-8 group"
+                >
+                  <div className="relative h-full min-h-[600px] overflow-hidden bg-white border border-border hover:border-primary/50 transition-all duration-500">
+                    {/* Full height image */}
+                    <div className="relative h-full">
+                      <Image
+                        src={image.imageUrl}
+                        alt={image.description}
+                        fill
+                        className="object-cover group-hover:scale-[1.02] transition-transform duration-700"
+                        data-ai-hint={image.imageHint}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+
+                      {/* Content overlay at bottom */}
+                      <div className="absolute bottom-0 left-0 right-0 p-10 lg:p-12">
+                        <div className="mb-4">
+                          <span className="inline-block px-4 py-1.5 bg-primary text-white text-xs font-bold uppercase tracking-wider">
+                            Featured
+                          </span>
+                        </div>
+                        <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white font-headline mb-4 leading-tight">
+                          {item.title}
+                        </h3>
+                        <p className="text-lg text-white/90 mb-6 line-clamp-2">
+                          {item.snippet}
+                        </p>
+                        <div className="flex items-center gap-4 text-white/80 text-sm">
+                          <span>{item.date}</span>
+                          <span className="flex items-center gap-2 group-hover:gap-3 transition-all">
+                            Read Article <ArrowRight className="h-4 w-4" />
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
+
+            {/* Side Column - 2 Stories stacked - Takes 4 columns */}
+            <div className="lg:col-span-4 flex flex-col gap-8">
+              {news.slice(1, 3).map((item) => {
                 const image = newsImages.find(img => img.id === `news-${item.id}`) || newsImages[0];
                 return (
-                <CarouselItem key={item.id} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                  <div className="h-full">
-                    <Card className="flex flex-col h-full group overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-300 bg-white">
-                      <CardHeader className="p-0 relative overflow-hidden">
-                        <div className="relative h-64 overflow-hidden">
-                          <Image
-                            src={image.imageUrl}
-                            alt={image.description}
-                            width={600}
-                            height={400}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                            data-ai-hint={image.imageHint}
-                          />
-                          {/* Gradient overlay on image for text readability */}
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                  <Link
+                    key={item.id}
+                    href={`/news#news-${item.id}`}
+                    className="group flex-1"
+                  >
+                    <div className="relative h-full min-h-[285px] overflow-hidden bg-white border border-border hover:border-primary/50 transition-all duration-500">
+                      <div className="relative h-full">
+                        <Image
+                          src={image.imageUrl}
+                          alt={image.description}
+                          fill
+                          className="object-cover group-hover:scale-[1.02] transition-transform duration-700"
+                          data-ai-hint={image.imageHint}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
 
-                          {/* Date badge on image */}
-                          <div className="absolute bottom-4 left-4">
-                            <Badge className="bg-white/90 text-primary hover:bg-white shadow-lg border-0 backdrop-blur-sm">
-                              {item.date}
-                            </Badge>
+                        <div className="absolute bottom-0 left-0 right-0 p-6">
+                          <h3 className="text-xl font-bold text-white font-headline mb-2 leading-tight line-clamp-2">
+                            {item.title}
+                          </h3>
+                          <div className="flex items-center gap-3 text-white/70 text-xs">
+                            <span>{item.date}</span>
+                            <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />
                           </div>
                         </div>
-                        <div className="absolute top-4 right-4">
-                          <div className="h-10 w-10 rounded-full bg-primary/90 backdrop-blur-sm flex items-center justify-center">
-                            <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
-                            </svg>
-                          </div>
-                        </div>
-                      </CardHeader>
-                      <CardContent className="flex-grow p-6">
-                        <div className="flex items-center gap-2 mb-3">
-                          <div className="h-1 w-8 bg-primary"></div>
-                          <div className="h-1 w-4 bg-primary/50"></div>
-                        </div>
-                        <CardTitle className="text-foreground text-xl mb-3 font-headline leading-tight line-clamp-2 group-hover:text-primary transition-colors duration-300">
-                          {item.title}
-                        </CardTitle>
-                        <CardDescription className="text-base text-muted-foreground line-clamp-3 leading-relaxed">
-                          {item.snippet}
-                        </CardDescription>
-                      </CardContent>
-                      <CardFooter className="p-6 pt-0 border-t">
-                        <Button variant="ghost" asChild className="w-full justify-between text-primary hover:text-white hover:bg-primary transition-all">
-                          <Link href={`/news#news-${item.id}`} className="flex items-center gap-2">
-                            <span className="font-semibold">Read Full Story</span>
-                            <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                          </Link>
-                        </Button>
-                      </CardFooter>
-                    </Card>
-                  </div>
-                </CarouselItem>
-              )})}
-            </CarouselContent>
-            <CarouselPrevious className="hidden md:flex -left-12 h-12 w-12 border-2 bg-white hover:bg-primary hover:text-white hover:border-primary transition-all shadow-md" />
-            <CarouselNext className="hidden md:flex -right-12 h-12 w-12 border-2 bg-white hover:bg-primary hover:text-white hover:border-primary transition-all shadow-md" />
-          </Carousel>
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Bottom Row - 3 Equal Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {news.slice(3, 6).map((item) => {
+              const image = newsImages.find(img => img.id === `news-${item.id}`) || newsImages[0];
+              return (
+                <Link
+                  key={item.id}
+                  href={`/news#news-${item.id}`}
+                  className="group"
+                >
+                  <article className="h-full bg-white border border-border hover:border-primary/50 transition-all duration-500 overflow-hidden">
+                    <div className="relative h-64 overflow-hidden">
+                      <Image
+                        src={image.imageUrl}
+                        alt={image.description}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-700"
+                        data-ai-hint={image.imageHint}
+                      />
+                    </div>
+                    <div className="p-6">
+                      <div className="text-xs text-muted-foreground mb-3">{item.date}</div>
+                      <h3 className="text-xl font-bold text-foreground font-headline mb-3 leading-tight line-clamp-2 group-hover:text-primary transition-colors">
+                        {item.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground line-clamp-2 mb-4">
+                        {item.snippet}
+                      </p>
+                      <div className="flex items-center gap-2 text-primary text-sm font-semibold">
+                        <span>Read More</span>
+                        <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      </div>
+                    </div>
+                  </article>
+                </Link>
+              );
+            })}
+          </div>
         </div>
       </section>
 
-      {/* Featured Tenders */}
-      <section className="py-24 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-background to-card" />
+      {/* Featured Tenders - World Class Design */}
+      <section className="py-32 bg-background relative overflow-hidden">
+        {/* Subtle background pattern */}
+        <div className="absolute inset-0 opacity-[0.02]">
+          <div className="absolute inset-0" style={{
+            backgroundImage: 'radial-gradient(circle at 2px 2px, #E34234 1px, transparent 0)',
+            backgroundSize: '48px 48px'
+          }}></div>
+        </div>
+
         <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4 font-headline">
-              Featured Tenders
+          {/* Minimalist Header */}
+          <div className="mb-20">
+            <div className="flex items-center gap-6 mb-8">
+              <div className="h-px w-12 bg-primary"></div>
+              <span className="text-xs font-bold text-primary uppercase tracking-[0.2em]">Current Opportunities</span>
+            </div>
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground font-headline mb-4 tracking-tight">
+              Open Tenders
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Explore current procurement opportunities and tender documents
+            <p className="text-xl text-muted-foreground max-w-2xl">
+              Explore procurement opportunities and submit your proposals
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {tenders.slice(0, 3).map((tender, index) => (
-              <Card
+          {/* Premium Grid Layout - 3 Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            {tenders.slice(0, 3).map((tender) => (
+              <Link
                 key={tender.id}
-                className="relative group overflow-hidden shadow-lg hover:shadow-2xl flex flex-col border-2 border-border hover:border-primary/50 transition-all duration-500 hover:scale-[1.02] hover:-translate-y-2 bg-card"
-                style={{ animationDelay: `${index * 100}ms` }}
+                href="/procurement"
+                className="group"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent" />
+                <article className="h-full bg-white border border-border hover:border-primary/50 transition-all duration-500 overflow-hidden">
+                  {/* Top colored bar */}
+                  <div className="h-2 bg-primary"></div>
 
-                <CardHeader className="relative z-10">
-                  <div className="flex items-start justify-between gap-3 mb-3">
-                    <Badge variant="secondary" className="bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20">
-                      {tender.category}
-                    </Badge>
-                    <FileText className="h-5 w-5 text-primary/70 group-hover:text-primary transition-colors" />
-                  </div>
-                  <CardTitle className="text-primary text-xl mb-2 group-hover:text-accent transition-colors duration-300 line-clamp-2">
-                    {tender.title}
-                  </CardTitle>
-                </CardHeader>
+                  {/* Content */}
+                  <div className="p-8">
+                    {/* Category Badge */}
+                    <div className="mb-6">
+                      <span className="inline-block px-4 py-1.5 bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider border border-primary/20">
+                        {tender.category}
+                      </span>
+                    </div>
 
-                <CardContent className="flex-grow relative z-10">
-                  <div className="space-y-3">
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <div className="h-2 w-2 rounded-full bg-primary/60" />
-                      <span className="font-medium">Closing Date:</span>
-                      <span className="text-foreground font-semibold">{tender.closingDate}</span>
+                    {/* Title */}
+                    <h3 className="text-2xl font-bold text-foreground font-headline mb-4 leading-tight line-clamp-3 group-hover:text-primary transition-colors">
+                      {tender.title}
+                    </h3>
+
+                    {/* Status Badge */}
+                    <div className="mb-6">
+                      <span className={`inline-block px-3 py-1 text-xs font-bold uppercase tracking-wider ${
+                        tender.status === 'Open'
+                          ? 'bg-green-100 text-green-700 border border-green-200'
+                          : 'bg-gray-100 text-gray-600 border border-gray-200'
+                      }`}>
+                        {tender.status}
+                      </span>
+                    </div>
+
+                    {/* Details */}
+                    <div className="space-y-3 mb-6 pb-6 border-b border-border">
+                      <div className="flex items-start gap-3">
+                        <FileText className="h-5 w-5 text-muted-foreground mt-0.5 flex-shrink-0" />
+                        <div>
+                          <p className="text-xs text-muted-foreground mb-1">Tender ID</p>
+                          <p className="text-sm font-semibold text-foreground">TENDER-{String(tender.id).padStart(4, '0')}</p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-start gap-3">
+                        <svg className="h-5 w-5 text-muted-foreground mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        <div>
+                          <p className="text-xs text-muted-foreground mb-1">Closing Date</p>
+                          <p className="text-sm font-semibold text-foreground">{tender.closingDate}</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* CTA */}
+                    <div className="flex items-center justify-between">
+                      <span className="text-primary text-sm font-bold uppercase tracking-wider group-hover:translate-x-1 transition-transform">
+                        View Details
+                      </span>
+                      <ArrowRight className="h-5 w-5 text-primary group-hover:translate-x-2 transition-transform" />
                     </div>
                   </div>
-                </CardContent>
-
-                <CardFooter className="relative z-10">
-                  <Button asChild className="w-full group/btn bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary transition-all duration-300 shadow-md hover:shadow-xl">
-                    <Link href="#" className="flex items-center justify-center gap-2">
-                      <Download className="h-4 w-4 group-hover/btn:animate-bounce" />
-                      Download Tender
-                    </Link>
-                  </Button>
-                </CardFooter>
-
-                <div className="absolute bottom-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700" />
-              </Card>
+                </article>
+              </Link>
             ))}
           </div>
 
-          <div className="text-center mt-16">
-            <Button asChild size="lg" className="text-lg h-14 px-10 bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary shadow-lg hover:shadow-xl transition-all duration-300">
-              <Link href="/procurement" className="flex items-center gap-2">
-                View All Tenders
-                <ArrowRight className="h-5 w-5" />
-              </Link>
-            </Button>
+          {/* View All CTA */}
+          <div className="text-center pt-8">
+            <Link
+              href="/procurement"
+              className="inline-flex items-center gap-3 px-10 py-4 bg-primary text-white font-bold hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl group"
+            >
+              <span className="text-lg">View All Tenders</span>
+              <ArrowRight className="h-6 w-6 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </div>
         </div>
       </section>
