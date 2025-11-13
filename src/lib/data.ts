@@ -58,7 +58,7 @@ export const resources = [
 ];
 
 export const staff = [
-  { id: 1, name: 'Dr. Evelyn Reed', role: 'Commissioner', email: 'e.reed@gov.co' },
+  { id: 1, name: 'Hon Nura Iro Ma\'aji Phd', role: 'Commissioner', email: 'commissioner@procurement.kn.gov.ng' },
   { id: 2, name: 'Marcus Thorne', role: 'Director of Procurement', email: 'm.thorne@gov.co' },
   { id: 3, name: 'Lena Petrova', role: 'Head of Project Monitoring', email: 'l.petrova@gov.co' },
   { id: 4, name: 'Samuel Jones', role: 'Chief Financial Officer', email: 's.jones@gov.co' },

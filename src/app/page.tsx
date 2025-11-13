@@ -1,6 +1,9 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import Balancer from 'react-wrap-balancer';
+import { useState, useEffect } from 'react';
 import {
   ArrowRight,
   Briefcase,
@@ -50,62 +53,136 @@ const quickLinkIcons = {
 export default function Home() {
   const newsImages = PlaceHolderImages.filter((img) => img.id.startsWith('news'));
   const tenderImages = PlaceHolderImages.filter((img) => img.id.startsWith('tender'));
-  const heroImage = PlaceHolderImages.find((img) => img.id === 'hero-home');
+
+  // Hero images array
+  const heroImages = [
+    '/commisioner10.jpeg',
+    '/commisioner9.jpeg',
+    '/commisioner8.jpeg',
+    '/commisioner2.jpeg',
+    '/commisioner1.jpeg',
+  ];
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // Auto-change images every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) =>
+        prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [heroImages.length]);
 
   return (
     <div className="flex flex-col">
-      {/* Hero Section */}
-      <section className="relative bg-card h-[70vh] md:h-[85vh] flex items-center justify-center text-white overflow-hidden">
-        {heroImage && (
-          <Image
-            src={heroImage.imageUrl}
-            alt={heroImage.description}
-            fill
-            className="object-cover scale-105 animate-[scale-in_1.5s_ease-out]"
-            data-ai-hint={heroImage.imageHint}
-            priority
-          />
-        )}
-        <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-primary/30" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(227,66,52,0.15),transparent_50%)]" />
+      {/* Hero Section - Full Image Background */}
+      <section className="relative min-h-screen flex items-center overflow-hidden">
+        {/* Background Images with Crossfade */}
+        {heroImages.map((imageSrc, index) => (
+          <div
+            key={imageSrc}
+            className={`absolute inset-0 z-0 transition-opacity duration-1000 ${
+              index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            <Image
+              src={imageSrc}
+              alt={`Hero image ${index + 1}`}
+              fill
+              className="object-cover"
+              priority={index === 0}
+            />
+            {/* Dark Overlay for text readability */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40"></div>
+          </div>
+        ))}
 
-        <div className="relative container mx-auto px-4 text-center z-10">
-          <div className="animate-fade-in">
-            <div className="inline-block mb-6 px-6 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
-              <p className="text-sm font-medium text-white">Ministry for Public Procurement, Project Monitoring and Evaluation</p>
+        {/* Content Overlay */}
+        <div className="container mx-auto px-4 py-20 md:py-32 relative z-10">
+          <div className="max-w-5xl">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2.5 px-5 py-2.5 bg-white/15 backdrop-blur-md rounded-full border border-white/30 mb-10 shadow-lg">
+              <div className="h-2.5 w-2.5 rounded-full bg-primary animate-pulse shadow-lg shadow-primary/50"></div>
+              <span className="text-sm md:text-base font-semibold text-white tracking-wide">Kano State Ministry for Public Procurement, Project Monitoring and Evaluation</span>
             </div>
 
-            <h1 className="text-5xl font-extrabold tracking-tight text-white md:text-7xl lg:text-8xl font-headline leading-tight">
-              <Balancer>
-                <span className="block">Transparent</span>
-                <span className="block text-gradient bg-gradient-to-r from-white via-red-100 to-white bg-clip-text">Procurement</span>
-                <span className="block">& Project Monitoring</span>
-              </Balancer>
-            </h1>
+            {/* Main Heading */}
+            <div className="space-y-8 mb-12">
+              <h1 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-white font-headline leading-[0.95] tracking-tighter">
+                Transparent
+                <br />
+                <span className="text-primary drop-shadow-2xl">Procurement</span>
+                <br />
+                <span className="text-white/95">for Kano's Future</span>
+              </h1>
+              <div className="flex items-center gap-4">
+                <div className="h-1.5 w-24 bg-primary shadow-lg shadow-primary/50"></div>
+                <div className="h-1 w-16 bg-white/40"></div>
+              </div>
+            </div>
 
-            <p className="mt-8 max-w-3xl mx-auto text-xl text-white/95 md:text-2xl leading-relaxed font-light">
-              Building a brighter future for our state through accountability, transparency, and measurable progress in public works.
+            {/* Description */}
+            <p className="text-xl md:text-2xl lg:text-3xl text-white/95 leading-relaxed max-w-4xl mb-12 font-light">
+              Building trust through accountability and transparent governance across all public works.
             </p>
 
-            <div className="mt-12 flex flex-col sm:flex-row justify-center gap-6">
-              <Button asChild size="lg" className="text-lg h-14 px-8 bg-white text-primary hover:bg-white/90 shadow-2xl shadow-white/20 hover:shadow-white/30 transition-all duration-300">
-                <Link href="/complaints">
-                  <MessageSquare className="mr-2 h-5 w-5" />
-                  Submit Complaint
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 mb-16">
+              <Button asChild size="lg" className="h-16 px-10 text-lg font-semibold shadow-2xl hover:shadow-primary/50 transition-all">
+                <Link href="/procurement" className="flex items-center gap-2">
+                  Browse Tenders
+                  <ArrowRight className="h-6 w-6" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="text-lg h-14 px-8 bg-transparent text-white border-2 border-white hover:bg-white hover:text-primary transition-all duration-300 shadow-xl">
+              <Button asChild size="lg" variant="outline" className="h-16 px-10 text-lg font-semibold border-2 border-white text-white bg-white/10 backdrop-blur-md hover:bg-white hover:text-primary transition-all">
                 <Link href="/projects">
-                  <Briefcase className="mr-2 h-5 w-5" />
                   View Projects
                 </Link>
               </Button>
             </div>
+
+            {/* Stats Row */}
+            <div className="grid grid-cols-3 gap-8 lg:gap-12">
+              <div className="space-y-2">
+                <div className="flex items-baseline gap-1">
+                  <span className="text-5xl md:text-6xl lg:text-7xl font-bold text-white">150</span>
+                  <span className="text-3xl md:text-4xl font-bold text-white">+</span>
+                </div>
+                <p className="text-sm md:text-base font-medium text-white/80">Active Projects</p>
+              </div>
+              <div className="space-y-2">
+                <div className="flex items-baseline gap-1">
+                  <span className="text-5xl md:text-6xl lg:text-7xl font-bold text-white">320</span>
+                  <span className="text-3xl md:text-4xl font-bold text-white">+</span>
+                </div>
+                <p className="text-sm md:text-base font-medium text-white/80">Open Tenders</p>
+              </div>
+              <div className="space-y-2">
+                <div className="flex items-baseline gap-1">
+                  <span className="text-5xl md:text-6xl lg:text-7xl font-bold text-white">98</span>
+                  <span className="text-3xl md:text-4xl font-bold text-white">%</span>
+                </div>
+                <p className="text-sm md:text-base font-medium text-white/80">Satisfaction</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Floating Card - Bottom Right */}
+          <div className="absolute bottom-12 right-12 bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl p-6 max-w-sm hidden lg:block">
+            <div className="flex items-start gap-4">
+              <div className="p-3 bg-primary/10 rounded-lg flex-shrink-0">
+                <Briefcase className="h-6 w-6 text-primary" />
+              </div>
+              <div>
+                <p className="font-bold text-foreground mb-1">Project Updates</p>
+                <p className="text-sm text-muted-foreground">Real-time monitoring & tracking</p>
+              </div>
+            </div>
           </div>
         </div>
-
-        {/* Decorative Elements */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
       </section>
 
       {/* Quick Stats */}
