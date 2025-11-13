@@ -1,3 +1,100 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "commissioner-spotlight",
+      "description": "A portrait of the commissioner.",
+      "imageUrl": "https://images.unsplash.com/photo-1607990283143-e81e7a2c9349?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxwcm9mZXNzaW9uYWwlMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjI5NzQwMjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "professional portrait"
+    },
+    {
+      "id": "staff-1",
+      "description": "A portrait of a staff member.",
+      "imageUrl": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxwcm9mZXNzaW9uYWwlMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjI5NzQwMjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "professional portrait"
+    },
+    {
+      "id": "staff-2",
+      "description": "A portrait of a staff member.",
+      "imageUrl": "https://images.unsplash.com/photo-1655249493799-9cee4fe983bb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxwcm9mZXNzaW9uYWwlMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjI5NzQwMjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "professional portrait"
+    },
+    {
+      "id": "staff-3",
+      "description": "A portrait of a staff member.",
+      "imageUrl": "https://images.unsplash.com/photo-1607990283143-e81e7a2c9349?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxwcm9mZXNzaW9uYWwlMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjI5NzQwMjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "professional portrait"
+    },
+    {
+      "id": "staff-4",
+      "description": "A portrait of a staff member.",
+      "imageUrl": "https://images.unsplash.com/photo-1581065178047-8ee15951ede6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxwcm9mZXNzaW9uYWwlMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjI5NzQwMjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "professional portrait"
+    },
+    {
+      "id": "staff-5",
+      "description": "A portrait of a staff member.",
+      "imageUrl": "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxwcm9mZXNzaW9uYWwlMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjI5NzQwMjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "professional portrait"
+    },
+    {
+      "id": "staff-6",
+      "description": "A portrait of a staff member.",
+      "imageUrl": "https://images.unsplash.com/photo-1655249493799-9cee4fe983bb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxwcm9mZXNzaW9uYWwlMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjI5NzQwMjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "professional portrait"
+    },
+    {
+      "id": "news-1",
+      "description": "An image related to a news article about a new bridge.",
+      "imageUrl": "https://images.unsplash.com/photo-1569925457326-59b1c3611227?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxicmlkZ2UlMjBjb25zdHJ1Y3Rpb258ZW58MHx8fHwxNzYyOTY5NTQ4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "bridge construction"
+    },
+    {
+      "id": "news-2",
+      "description": "An image related to a news article about rural electrification.",
+      "imageUrl": "https://images.unsplash.com/photo-1552965734-5b9e868808b6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxwb3dlciUyMGxpbmVzfGVufDB8fHx8MTc2MzAyOTM2NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "power lines"
+    },
+    {
+      "id": "news-3",
+      "description": "An image related to a news article about procurement reform.",
+      "imageUrl": "https://images.unsplash.com/photo-1584445584400-1a7cc5de77ae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxvZmZpY2lhbCUyMGRvY3VtZW50fGVufDB8fHx8MTc2Mjk3NzUxMnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "official document"
+    },
+    {
+      "id": "news-4",
+      "description": "An image for a news story about a new highway.",
+      "imageUrl": "https://images.unsplash.com/photo-1685216037287-c9c70a919a3e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxoaWdod2F5JTIwc3Vuc2V0fGVufDB8fHx8MTc2MzAyOTM2NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "highway sunset"
+    },
+    {
+      "id": "news-5",
+      "description": "An image for a story about digital initiatives.",
+      "imageUrl": "https://images.unsplash.com/photo-1580106815433-a5b1d1d53d85?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzZXJ2ZXIlMjByb29tfGVufDB8fHx8MTc2Mjk1MjgwMXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "server room"
+    },
+    {
+      "id": "project-1",
+      "description": "An image of a highway construction project.",
+      "imageUrl": "https://images.unsplash.com/photo-1534097575056-ddba81f714c8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxyb2FkJTIwY29uc3RydWN0aW9ufGVufDB8fHx8MTc2MzAyOTM2NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "road construction"
+    },
+    {
+      "id": "project-2",
+      "description": "An image of a new public school building.",
+      "imageUrl": "https://images.unsplash.com/photo-1665860754719-2a060f4287b2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxtb2Rlcm4lMjBzY2hvb2x8ZW58MHx8fHwxNzYyOTc2MDkxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "modern school"
+    },
+    {
+      "id": "project-3",
+      "description": "An image of a water treatment plant.",
+      "imageUrl": "https://images.unsplash.com/photo-1655240510992-a278095698a1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx3YXRlciUyMHBsYW50fGVufDB8fHx8MTc2MzAyOTM2NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "water plant"
+    },
+    {
+      "id": "project-4",
+      "description": "An image of a community hospital.",
+      "imageUrl": "https://images.unsplash.com/photo-1626315869436-d6781ba69d6e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxob3NwaXRhbCUyMGJ1aWxkaW5nfGVufDB8fHx8MTc2Mjk2ODg5MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "hospital building"
+    }
+  ]
 }
