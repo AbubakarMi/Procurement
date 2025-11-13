@@ -1,5 +1,5 @@
 import Balancer from 'react-wrap-balancer';
-import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin } from 'lucide-react';
+import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Clock } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
@@ -61,21 +61,28 @@ export default function ContactPage() {
                 <MapPin className="h-6 w-6 text-primary mt-1" />
                 <div>
                   <h3 className="font-semibold">Address</h3>
-                  <p className="text-foreground/80">123 Government Avenue, Capital City, 10101</p>
+                  <p className="text-foreground/80">21 Magaji Rumfa Road</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
                 <Phone className="h-6 w-6 text-primary mt-1" />
                 <div>
                   <h3 className="font-semibold">Phone</h3>
-                  <p className="text-foreground/80">(123) 456-7890</p>
+                  <p className="text-foreground/80">08065455715</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
                 <Mail className="h-6 w-6 text-primary mt-1" />
                 <div>
                   <h3 className="font-semibold">Email</h3>
-                  <p className="text-foreground/80"><a href="mailto:info@gov.co" className="text-primary hover:underline">info@gov.co</a></p>
+                  <p className="text-foreground/80"><a href="mailto:info@procurement.kn.gov.ng" className="text-primary hover:underline">info@procurement.kn.gov.ng</a></p>
+                </div>
+              </div>
+               <div className="flex items-start gap-4">
+                <Clock className="h-6 w-6 text-primary mt-1" />
+                <div>
+                  <h3 className="font-semibold">Working Hour</h3>
+                  <p className="text-foreground/80">8:00 - 16:00</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">

@@ -50,9 +50,9 @@ export function Footer() {
           <div>
             <h3 className="font-semibold mb-4">Contact Us</h3>
             <address className="not-italic text-primary-foreground/80 space-y-2">
-              <p>123 Government Ave, Capital City</p>
-              <p>Email: <a href="mailto:info@gov.co" className="hover:text-primary-foreground">info@gov.co</a></p>
-              <p>Phone: (123) 456-7890</p>
+              <p>21 Magaji Rumfa Road</p>
+              <p>Email: <a href="mailto:info@procurement.kn.gov.ng" className="hover:text-primary-foreground">info@procurement.kn.gov.ng</a></p>
+              <p>Phone: 08065455715</p>
             </address>
           </div>
 
