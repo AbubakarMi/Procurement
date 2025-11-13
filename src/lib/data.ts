@@ -16,6 +16,12 @@ export const stats = [
   { label: 'Staff', value: '500+' },
 ];
 
+export const complaintStats = [
+    { label: 'Total Submitted', value: '1,245' },
+    { label: 'Resolved', value: '1,180' },
+    { label: 'In Progress', value: '65' },
+];
+
 export const news = [
   { id: 1, title: 'New Bridge to Connect North and South Districts', snippet: 'The ministry has approved the construction of a new suspension bridge, expected to reduce travel time by 45 minutes.', date: '2024-07-20' },
   { id: 2, title: 'Rural Electrification Project Phase 3 Completed', snippet: 'Over 50,000 households in rural areas now have access to reliable electricity thanks to the latest phase of our project.', date: '2024-07-18' },

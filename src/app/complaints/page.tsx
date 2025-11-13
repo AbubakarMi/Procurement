@@ -1,11 +1,17 @@
 import Balancer from 'react-wrap-balancer';
-import { Search } from 'lucide-react';
+import { Search, ListChecks, Hourglass, FilePlus2 } from 'lucide-react';
 import ComplaintForm from './complaint-form';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { faqs } from '@/lib/data';
+import { faqs, complaintStats } from '@/lib/data';
+
+const complaintStatIcons: { [key: string]: React.ReactNode } = {
+  'Total Submitted': <FilePlus2 className="h-6 w-6 text-primary" />,
+  'Resolved': <ListChecks className="h-6 w-6 text-primary" />,
+  'In Progress': <Hourglass className="h-6 w-6 text-primary" />,
+};
 
 export default function ComplaintPage() {
   return (
@@ -26,6 +32,24 @@ export default function ComplaintPage() {
         </div>
 
         <div className="space-y-8">
+          {/* Complaint Stats */}
+          <Card className="shadow-lg">
+            <CardHeader>
+              <CardTitle className="text-xl text-primary font-headline">Complaint Statistics</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              {complaintStats.map(stat => (
+                <div key={stat.label} className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    {complaintStatIcons[stat.label]}
+                    <span className="text-foreground/80">{stat.label}</span>
+                  </div>
+                  <span className="font-bold text-lg text-primary">{stat.value}</span>
+                </div>
+              ))}
+            </CardContent>
+          </Card>
+
           {/* Track Complaint */}
           <Card className="shadow-lg">
             <CardHeader>
