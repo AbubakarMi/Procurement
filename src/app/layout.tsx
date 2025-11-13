@@ -6,7 +6,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { Providers } from '@/components/providers';
 
 export const metadata: Metadata = {
-  title: 'GovConnect',
+  title: 'Ministry for Public Procurement, Project Monitoring and Evaluation',
   description: 'Transparent Procurement & Efficient Project Monitoring',
 };
 

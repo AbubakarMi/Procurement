@@ -16,7 +16,9 @@ export function Logo(props: SVGProps<SVGSVGElement>) {
         <path d="M2 7l6 10.5L14 7" />
         <path d="M10 7l6 10.5L22 7" />
       </svg>
-      <span className="font-bold text-xl text-primary font-headline">GovConnect</span>
+      <span className="font-bold text-lg text-primary font-headline">
+        Ministry for Public Procurement, Project Monitoring and Evaluation
+      </span>
     </div>
   );
 }

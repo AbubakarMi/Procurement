@@ -26,7 +26,7 @@ export function Footer() {
                     <path d="M2 7l6 10.5L14 7" />
                     <path d="M10 7l6 10.5L22 7" />
                 </svg>
-                <span className="font-bold text-xl text-primary-foreground font-headline">GovConnect</span>
+                <span className="font-bold text-lg text-primary-foreground font-headline">Ministry for Public Procurement, Project Monitoring and Evaluation</span>
               </div>
             </Link>
             <p className="text-sm text-primary-foreground/80">
@@ -79,7 +79,7 @@ export function Footer() {
         </div>
 
         <div className="mt-8 border-t border-primary-foreground/20 pt-8 text-center text-sm text-primary-foreground/80">
-          <p>&copy; {new Date().getFullYear()} GovConnect Ministry. All Rights Reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Ministry for Public Procurement, Project Monitoring and Evaluation. All Rights Reserved.</p>
         </div>
       </div>
     </footer>

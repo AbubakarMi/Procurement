@@ -39,7 +39,7 @@ export default function ProjectMap({ projects }: ProjectMapProps) {
       <Map
         defaultCenter={mapCenter}
         defaultZoom={9}
-        mapId="govconnect-map"
+        mapId="ministry-map"
         gestureHandling={'greedy'}
         disableDefaultUI={true}
       >
