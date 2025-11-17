@@ -15,7 +15,7 @@ export default function NewsPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section with Premium Design */}
-      <section className="relative bg-background py-32 overflow-hidden">
+      <section className="relative bg-background py-20 md:py-28 lg:py-32 overflow-hidden">
         {/* Animated Background Blobs */}
         <div className="absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-[fadeIn_2s_ease-out]"></div>
         <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-3xl animate-[fadeIn_2.5s_ease-out]"></div>
@@ -40,7 +40,7 @@ export default function NewsPage() {
             </div>
 
             {/* Main Title */}
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground font-headline mb-6 tracking-tight leading-tight animate-[fadeInUp_0.8s_ease-out_0.1s_both]">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground font-headline mb-6 tracking-tight leading-tight animate-[fadeInUp_0.8s_ease-out_0.1s_both]">
               <Balancer>Latest Ministry News</Balancer>
             </h1>
 
@@ -52,7 +52,7 @@ export default function NewsPage() {
             </div>
 
             {/* Subtitle */}
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed animate-[fadeInUp_0.8s_ease-out_0.2s_both]">
+            <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed animate-[fadeInUp_0.8s_ease-out_0.2s_both]">
               Stay informed about our latest projects, announcements, and initiatives across Kano State
             </p>
           </div>
@@ -60,41 +60,41 @@ export default function NewsPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-white border-y border-border">
+      <section className="py-12 md:py-16 bg-white border-y border-border">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 max-w-5xl mx-auto border border-border">
-            <div className="group relative bg-white p-8 text-center hover:bg-primary/5 transition-all duration-500 md:border-r border-b md:border-b-0 border-border">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 max-w-5xl mx-auto border border-border">
+            <div className="group relative bg-white p-6 md:p-8 text-center hover:bg-primary/5 transition-all duration-500 sm:border-r border-b sm:border-b-0 border-border">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-primary/10 transition-all duration-500"></div>
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                 <div className="absolute top-0 left-0 w-full h-0.5 bg-primary transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-700"></div>
               </div>
               <div className="relative">
                 <CheckCircle2 className="h-8 w-8 text-primary mb-4 mx-auto group-hover:scale-110 group-hover:rotate-6 transition-all duration-500" strokeWidth={2} />
-                <p className="text-5xl font-bold text-foreground mb-2 tabular-nums group-hover:text-primary transition-colors duration-500">{totalNews}</p>
+                <p className="text-4xl md:text-5xl font-bold text-foreground mb-2 tabular-nums group-hover:text-primary transition-colors duration-500">{totalNews}</p>
                 <p className="text-xs font-bold text-muted-foreground uppercase tracking-[0.2em]">Articles</p>
               </div>
             </div>
 
-            <div className="group relative bg-white p-8 text-center hover:bg-primary/5 transition-all duration-500 md:border-r border-b md:border-b-0 border-border">
+            <div className="group relative bg-white p-6 md:p-8 text-center hover:bg-primary/5 transition-all duration-500 sm:border-r border-b sm:border-b-0 border-border">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-primary/10 transition-all duration-500"></div>
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                 <div className="absolute top-0 left-0 w-full h-0.5 bg-primary transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-700 delay-75"></div>
               </div>
               <div className="relative">
                 <Calendar className="h-8 w-8 text-primary mb-4 mx-auto group-hover:scale-110 group-hover:rotate-6 transition-all duration-500" strokeWidth={2} />
-                <p className="text-5xl font-bold text-foreground mb-2 tabular-nums group-hover:text-primary transition-colors duration-500">2024</p>
+                <p className="text-4xl md:text-5xl font-bold text-foreground mb-2 tabular-nums group-hover:text-primary transition-colors duration-500">2024</p>
                 <p className="text-xs font-bold text-muted-foreground uppercase tracking-[0.2em]">Current Year</p>
               </div>
             </div>
 
-            <div className="group relative bg-white p-8 text-center hover:bg-primary/5 transition-all duration-500">
+            <div className="group relative bg-white p-6 md:p-8 text-center hover:bg-primary/5 transition-all duration-500">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-primary/10 transition-all duration-500"></div>
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                 <div className="absolute top-0 left-0 w-full h-0.5 bg-primary transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-700 delay-150"></div>
               </div>
               <div className="relative">
                 <TrendingUp className="h-8 w-8 text-primary mb-4 mx-auto group-hover:scale-110 group-hover:rotate-6 transition-all duration-500" strokeWidth={2} />
-                <p className="text-5xl font-bold text-foreground mb-2 tabular-nums group-hover:text-primary transition-colors duration-500">100%</p>
+                <p className="text-4xl md:text-5xl font-bold text-foreground mb-2 tabular-nums group-hover:text-primary transition-colors duration-500">100%</p>
                 <p className="text-xs font-bold text-muted-foreground uppercase tracking-[0.2em]">Transparency</p>
               </div>
             </div>
@@ -103,7 +103,7 @@ export default function NewsPage() {
       </section>
 
       {/* News Grid Section */}
-      <section className="py-32 bg-white relative overflow-hidden">
+      <section className="py-16 md:py-24 lg:py-32 bg-white relative overflow-hidden">
         {/* Subtle background pattern */}
         <div className="absolute inset-0 opacity-[0.02]">
           <div className="absolute inset-0" style={{
@@ -114,21 +114,21 @@ export default function NewsPage() {
 
         <div className="container mx-auto px-4 relative z-10">
           {/* Section Header */}
-          <div className="mb-20 max-w-4xl mx-auto">
+          <div className="mb-16 md:mb-20 max-w-4xl mx-auto">
             <div className="flex items-center gap-6 mb-8">
               <div className="h-px w-12 bg-primary"></div>
               <span className="text-xs font-bold text-primary uppercase tracking-[0.2em]">All Updates</span>
             </div>
-            <h2 className="text-5xl md:text-6xl font-bold text-foreground font-headline mb-4 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground font-headline mb-4 tracking-tight">
               News & Announcements
             </h2>
-            <p className="text-xl text-muted-foreground">
+            <p className="text-lg sm:text-xl text-muted-foreground">
               Comprehensive coverage of ministry activities and initiatives
             </p>
           </div>
 
           {/* Premium News Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {news.map((item, index) => {
               const image = newsImages.find(img => img.id === `news-${item.id}`) || newsImages[index % newsImages.length];
               return (
@@ -200,10 +200,10 @@ export default function NewsPage() {
           </div>
 
           {/* Premium Pagination */}
-          <div className="mt-24 flex justify-center">
+          <div className="mt-16 md:mt-24 flex justify-center">
             <div className="inline-flex items-center gap-3 p-2 bg-background border-2 border-border hover:border-primary/50 transition-all duration-500">
               <button
-                className="px-6 py-3 text-sm font-bold text-muted-foreground bg-white hover:bg-primary hover:text-white transition-all duration-500 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-muted-foreground uppercase tracking-[0.2em]"
+                className="px-4 md:px-6 py-3 text-sm font-bold text-muted-foreground bg-white hover:bg-primary hover:text-white transition-all duration-500 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-muted-foreground uppercase tracking-[0.2em]"
                 disabled
               >
                 Prev
@@ -224,7 +224,7 @@ export default function NewsPage() {
                 </button>
               </div>
 
-              <button className="px-6 py-3 text-sm font-bold text-foreground bg-white hover:bg-primary hover:text-white transition-all duration-500 uppercase tracking-[0.2em]">
+              <button className="px-4 md:px-6 py-3 text-sm font-bold text-foreground bg-white hover:bg-primary hover:text-white transition-all duration-500 uppercase tracking-[0.2em]">
                 Next
               </button>
             </div>

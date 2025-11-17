@@ -47,7 +47,7 @@ export default function AboutPage() {
 
             {/* Main Heading */}
             <h1
-              className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground font-headline tracking-tight"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground font-headline tracking-tight"
               style={{ animation: 'fadeInUp 0.8s ease-out 0.1s both' }}
             >
               <Balancer>
@@ -60,7 +60,7 @@ export default function AboutPage() {
 
             {/* Subtitle */}
             <p
-              className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed"
+              className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed"
               style={{ animation: 'fadeInUp 0.8s ease-out 0.2s both' }}
             >
               <Balancer>
@@ -105,7 +105,7 @@ export default function AboutPage() {
                   <div className="h-px w-12 bg-primary"></div>
                   <span className="text-xs font-bold text-primary uppercase tracking-[0.2em]">Our Mission</span>
                 </div>
-                <h2 className="text-4xl md:text-5xl font-bold text-foreground font-headline leading-tight">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground font-headline leading-tight">
                   Transforming Kano Through Transparent Governance
                 </h2>
               </div>
@@ -134,9 +134,9 @@ export default function AboutPage() {
             </div>
 
             {/* Right Side - Vision & Mission Cards */}
-            <div className="relative h-full min-h-[600px]" style={{ animation: 'fadeInUp 0.8s ease-out 0.2s both' }}>
+            <div className="relative h-full min-h-[500px] md:min-h-[600px]" style={{ animation: 'fadeInUp 0.8s ease-out 0.2s both' }}>
               {/* Vision Card - Top Right */}
-              <article className="absolute top-0 right-0 w-5/6 group">
+              <article className="relative lg:absolute top-0 right-0 w-full lg:w-5/6 mb-6 lg:mb-0 group">
                 <div className="relative overflow-hidden border-2 border-border bg-white hover:border-primary transition-all duration-700 hover:shadow-2xl">
                   {/* Animated gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-transparent group-hover:from-primary/5 group-hover:via-primary/3 group-hover:to-transparent transition-all duration-700 pointer-events-none"></div>
@@ -170,7 +170,7 @@ export default function AboutPage() {
               </article>
 
               {/* Mission Card - Bottom Left */}
-              <article className="absolute bottom-0 left-0 w-5/6 group">
+              <article className="relative lg:absolute bottom-0 left-0 w-full lg:w-5/6 group">
                 <div className="relative overflow-hidden border-2 border-border bg-white hover:border-primary transition-all duration-700 hover:shadow-2xl">
                   {/* Animated gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-transparent group-hover:from-primary/5 group-hover:via-primary/3 group-hover:to-transparent transition-all duration-700 pointer-events-none"></div>
@@ -219,7 +219,7 @@ export default function AboutPage() {
               <Award className="h-4 w-4 text-primary" strokeWidth={2.5} />
               <span className="text-xs font-bold text-primary uppercase tracking-[0.3em]">Core Values</span>
             </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground font-headline mb-6 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground font-headline mb-6 tracking-tight">
               Our Guiding Principles
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -227,7 +227,7 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border-2 border-border">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0 border-2 border-border">
             {[
               {
                 icon: Shield,
@@ -262,7 +262,7 @@ export default function AboutPage() {
             ].map((value, index) => (
               <div
                 key={index}
-                className="group relative bg-white p-10 text-center hover:bg-primary/5 transition-all duration-500 border-r-2 border-b-2 border-border last:border-r-0 md:[&:nth-child(3n)]:border-r-0"
+                className="group relative bg-white p-6 md:p-8 lg:p-10 text-center hover:bg-primary/5 transition-all duration-500 border-r-2 border-b-2 border-border last:border-r-0 sm:[&:nth-child(2n)]:border-r-0 lg:[&:nth-child(2n)]:border-r-2 lg:[&:nth-child(3n)]:border-r-0"
                 style={{ animation: `fadeInUp 0.8s ease-out ${index * 0.1}s both` }}
               >
                 {/* Gradient overlay */}
@@ -293,10 +293,10 @@ export default function AboutPage() {
               <Sparkles className="h-4 w-4 text-primary" strokeWidth={2.5} />
               <span className="text-xs font-bold text-primary uppercase tracking-[0.3em]">State Leadership</span>
             </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground font-headline mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground font-headline mb-4">
               His Excellency Alh. Abba Kabir Yusuf
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
               The visionary leader steering Kano State towards unprecedented development and prosperity
             </p>
           </div>
@@ -312,7 +312,7 @@ export default function AboutPage() {
                       Executive Governor of Kano State
                     </p>
                   </div>
-                  <h3 className="text-3xl md:text-4xl font-bold text-foreground font-headline">
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground font-headline">
                     Championing Progress Across Kano State
                   </h3>
                 </div>
@@ -324,7 +324,7 @@ export default function AboutPage() {
                     <svg className="w-10 h-10 text-primary/20 mb-6" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                     </svg>
-                    <p className="text-xl md:text-2xl text-foreground/90 leading-relaxed mb-6">
+                    <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-foreground/90 leading-relaxed mb-6">
                       Our administration is committed to transforming Kano State into a beacon of development, transparency, and good governance. Through strategic investments in infrastructure, education, and healthcare, we are building a future that every citizen of Kano can be proud of.
                     </p>
                     <div className="flex items-center gap-4 pt-6 border-t-2 border-primary/20">
@@ -335,7 +335,7 @@ export default function AboutPage() {
                 </article>
 
                 {/* Key Initiatives */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                   {[
                     { icon: TrendingUp, title: 'Infrastructure', subtitle: 'Development' },
                     { icon: Users, title: 'Education', subtitle: 'Advancement' },
@@ -408,10 +408,10 @@ export default function AboutPage() {
                 <Award className="h-4 w-4 text-primary" strokeWidth={2.5} />
                 <span className="text-xs font-bold text-primary uppercase tracking-[0.3em]">Ministry Leadership</span>
               </div>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground font-headline mb-4">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground font-headline mb-4">
                 Meet Our Commissioner
               </h2>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
                 Leading the Ministry for Public Procurement, Project Monitoring and Evaluation
               </p>
             </div>
@@ -455,7 +455,7 @@ export default function AboutPage() {
                         {commissioner.role}
                       </p>
                     </div>
-                    <h3 className="text-3xl md:text-4xl font-bold text-foreground font-headline">
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground font-headline">
                       Leading Kano's Procurement Revolution
                     </h3>
                   </div>
@@ -467,7 +467,7 @@ export default function AboutPage() {
                       <svg className="w-10 h-10 text-primary/20 mb-6" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                       </svg>
-                      <p className="text-xl md:text-2xl text-foreground/90 leading-relaxed mb-6">
+                      <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-foreground/90 leading-relaxed mb-6">
                         Our commitment is to the people. Every project we undertake is a promise to enhance quality of life, foster economic growth, and build a legacy of trust and transparency. We are not just building infrastructure; we are building the future.
                       </p>
                       <div className="flex items-center gap-4 pt-6 border-t-2 border-primary/20">
@@ -478,7 +478,7 @@ export default function AboutPage() {
                   </article>
 
                   {/* Contact Cards */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <article className="group relative bg-white border-2 border-border hover:border-primary transition-all duration-500 hover:shadow-xl overflow-hidden">
                       <div className="absolute top-0 left-0 w-full h-1 bg-primary transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-700"></div>
                       <div className="absolute inset-0 bg-gradient-to-br from-transparent to-transparent group-hover:from-primary/5 group-hover:to-primary/10 transition-all duration-500"></div>
@@ -537,15 +537,15 @@ export default function AboutPage() {
               <Users className="h-4 w-4 text-primary" strokeWidth={2.5} />
               <span className="text-xs font-bold text-primary uppercase tracking-[0.3em]">Our Leadership Team</span>
             </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground font-headline mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground font-headline mb-6">
               Meet the Team
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">
               Experienced professionals dedicated to delivering excellence in public procurement and project monitoring
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {otherStaff.map((person, index) => {
               const image = staffImages.find(img => img.id === `staff-${person.id}`) || staffImages[index % staffImages.length];
 

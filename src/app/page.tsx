@@ -129,7 +129,7 @@ export default function Home() {
             {/* Main Heading - Ultra Premium */}
             <div className="space-y-10 mb-16" style={{ animation: 'fadeInUp 0.8s ease-out 0.1s both' }}>
               <div className="space-y-6">
-                <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-white font-headline leading-[0.9] tracking-tighter">
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white font-headline leading-[0.9] tracking-tighter">
                   <span className="block">Transparent</span>
                   <span className="block bg-gradient-to-r from-primary via-primary to-accent bg-clip-text text-transparent drop-shadow-2xl">
                     Procurement
@@ -144,7 +144,7 @@ export default function Home() {
               </div>
 
               {/* Description */}
-              <p className="text-2xl md:text-3xl lg:text-4xl text-white/95 leading-relaxed max-w-4xl font-light">
+              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/95 leading-relaxed max-w-4xl font-light">
                 <Balancer>
                   Building trust through accountability and transparent governance across all public works
                 </Balancer>
@@ -174,7 +174,7 @@ export default function Home() {
 
             {/* Stats Row - Clean Minimalist */}
             <div
-              className="grid grid-cols-2 md:grid-cols-4 gap-12 lg:gap-16"
+              className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 lg:gap-12"
               style={{ animation: 'fadeInUp 0.8s ease-out 0.3s both' }}
             >
               {[
@@ -186,7 +186,7 @@ export default function Home() {
                 <div key={index} className="group text-center">
                   <div className="relative">
                     <div className="flex items-baseline justify-center gap-1 mb-3">
-                      <span className="text-6xl md:text-7xl font-bold text-white tabular-nums group-hover:scale-105 transition-transform duration-500">
+                      <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tabular-nums group-hover:scale-105 transition-transform duration-500">
                         {stat.value}
                       </span>
                     </div>
@@ -209,7 +209,7 @@ export default function Home() {
       </section>
 
       {/* Mission Statement - Premium Banner */}
-      <section className="relative py-32 bg-gradient-to-br from-primary via-primary to-accent overflow-hidden">
+      <section className="relative py-16 md:py-24 lg:py-32 bg-gradient-to-br from-primary via-primary to-accent overflow-hidden">
         {/* Decorative elements */}
         <div className="absolute top-0 left-0 w-full h-full opacity-10">
           <div className="absolute inset-0" style={{
@@ -225,13 +225,13 @@ export default function Home() {
               <span className="text-sm font-bold text-white uppercase tracking-[0.3em]">Our Commitment</span>
             </div>
 
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white font-headline leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white font-headline leading-tight">
               <Balancer>
                 Ensuring Accountability and Value in Every Naira Spent on Public Projects
               </Balancer>
             </h2>
 
-            <p className="text-xl md:text-2xl text-white/95 leading-relaxed max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl md:text-2xl text-white/95 leading-relaxed max-w-3xl mx-auto">
               <Balancer>
                 Through transparent procurement, rigorous monitoring, and comprehensive evaluation processes, we build a better Kano State
               </Balancer>
@@ -255,73 +255,115 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Impact By Numbers - Clean Minimalist Design */}
-      <section className="py-32 bg-white relative overflow-hidden">
-        {/* Subtle background pattern */}
-        <div className="absolute inset-0 opacity-[0.02]">
-          <div className="absolute inset-0" style={{
-            backgroundImage: 'radial-gradient(circle at 2px 2px, #E34234 1px, transparent 0)',
-            backgroundSize: '48px 48px'
-          }}></div>
-        </div>
+      {/* Impact By Numbers - World Class Design */}
+      <section className="py-16 md:py-24 lg:py-32 bg-gradient-to-br from-primary/5 via-background to-white relative overflow-hidden">
+        {/* Decorative Elements */}
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-3xl"></div>
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-6xl mx-auto">
-            {/* Clean Header */}
-            <div className="mb-24 text-center">
+          <div className="max-w-7xl mx-auto">
+            {/* Header */}
+            <div className="text-center mb-20" style={{ animation: 'fadeInUp 0.8s ease-out' }}>
               <div className="flex items-center justify-center gap-6 mb-8">
-                <div className="h-px w-16 bg-primary"></div>
+                <div className="h-px w-20 bg-gradient-to-r from-transparent to-primary"></div>
                 <span className="text-xs font-bold text-primary uppercase tracking-[0.3em]">Our Impact</span>
-                <div className="h-px w-16 bg-primary"></div>
+                <div className="h-px w-20 bg-gradient-to-l from-transparent to-primary"></div>
               </div>
-              <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground font-headline mb-6 tracking-tight">
-                Impact By Numbers
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground font-headline mb-6 tracking-tight">
+                <Balancer>
+                  Impact By{' '}
+                  <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+                    Numbers
+                  </span>
+                </Balancer>
               </h2>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                Measurable results across procurement and project delivery
+              <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
+                Measurable results driving transparency and accountability
               </p>
             </div>
 
-            {/* Clean Stats Display - No Cards */}
-            <div className="space-y-16">
+            {/* Stats Grid - World Class Layout */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
               {stats.map((stat, index) => (
                 <div
                   key={stat.label}
-                  className="group"
+                  className="group relative"
                   style={{ animation: `fadeInUp 0.8s ease-out ${index * 0.15}s both` }}
                 >
-                  <div className="flex items-center gap-12">
-                    {/* Icon */}
-                    <div className="flex-shrink-0">
-                      <div className="p-6 bg-primary/5 border-2 border-primary/10 group-hover:border-primary/30 group-hover:bg-primary/10 transition-all duration-500">
-                        {statIcons[stat.label as keyof typeof statIcons]}
-                      </div>
+                  {/* Main Content */}
+                  <div className="relative bg-white p-6 md:p-10 lg:p-12 text-center transition-all duration-500 group-hover:shadow-2xl overflow-hidden">
+                    {/* Animated Background */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/0 group-hover:from-primary/10 group-hover:via-primary/5 group-hover:to-transparent transition-all duration-700"></div>
+
+                    {/* Top Border Animation */}
+                    <div className="absolute top-0 left-0 right-0 h-1 overflow-hidden">
+                      <div className="h-full bg-gradient-to-r from-primary to-accent transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-700"></div>
                     </div>
 
-                    {/* Content */}
-                    <div className="flex-grow">
-                      <div className="flex items-baseline gap-6">
-                        <p className="text-6xl md:text-7xl lg:text-8xl font-bold text-primary tabular-nums group-hover:scale-105 transition-transform duration-500 origin-left">
-                          {stat.value}
-                        </p>
-                        <div className="flex-grow">
-                          <p className="text-2xl md:text-3xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-500">
-                            {stat.label}
-                          </p>
-                          <div className="h-1 w-full max-w-md bg-primary/10 group-hover:bg-primary/30 transition-all duration-500"></div>
+                    {/* Icon */}
+                    <div className="relative mb-8">
+                      <div className="inline-flex p-5 bg-primary/5 group-hover:bg-primary/10 transition-all duration-500">
+                        <div className="transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                          {statIcons[stat.label as keyof typeof statIcons]}
                         </div>
                       </div>
                     </div>
+
+                    {/* Number */}
+                    <div className="relative mb-6">
+                      <p className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-primary tabular-nums leading-none mb-2 transform group-hover:scale-110 transition-transform duration-500">
+                        {stat.value}
+                      </p>
+                    </div>
+
+                    {/* Divider */}
+                    <div className="relative mb-6">
+                      <div className="h-px w-24 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto opacity-30 group-hover:opacity-100 group-hover:w-32 transition-all duration-500"></div>
+                    </div>
+
+                    {/* Label */}
+                    <div className="relative">
+                      <p className="text-lg md:text-xl font-bold text-foreground uppercase tracking-[0.1em] group-hover:text-primary transition-colors duration-500">
+                        {stat.label}
+                      </p>
+                    </div>
+
+                    {/* Bottom Glow */}
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-24 bg-primary/0 group-hover:bg-primary/10 blur-2xl transition-all duration-700"></div>
+
+                    {/* Corner Accents */}
+                    <div className="absolute top-0 right-0 w-16 h-16 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                      <div className="absolute top-0 right-0 w-full h-px bg-gradient-to-l from-primary to-transparent"></div>
+                      <div className="absolute top-0 right-0 h-full w-px bg-gradient-to-b from-primary to-transparent"></div>
+                    </div>
+                    <div className="absolute bottom-0 left-0 w-16 h-16 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-primary to-transparent"></div>
+                      <div className="absolute bottom-0 left-0 h-full w-px bg-gradient-to-t from-primary to-transparent"></div>
+                    </div>
                   </div>
+
+                  {/* Shadow Element */}
+                  <div className="absolute -bottom-4 -right-4 w-full h-full bg-primary/5 -z-10 transform group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-500"></div>
                 </div>
               ))}
+            </div>
+
+            {/* Bottom Tagline */}
+            <div
+              className="text-center mt-20"
+              style={{ animation: 'fadeInUp 0.8s ease-out 0.6s both' }}
+            >
+              <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                Every number represents our commitment to building a transparent and accountable procurement system for Kano State
+              </p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Latest News - Ultra Premium Design */}
-      <section className="py-32 bg-gradient-to-br from-primary/5 via-background to-accent/5 relative overflow-hidden">
+      <section className="py-16 md:py-24 lg:py-32 bg-gradient-to-br from-primary/5 via-background to-accent/5 relative overflow-hidden">
         {/* Subtle background pattern */}
         <div className="absolute inset-0 opacity-[0.02]">
           <div className="absolute inset-0" style={{
@@ -337,10 +379,10 @@ export default function Home() {
               <Sparkles className="h-5 w-5 text-primary" strokeWidth={2.5} />
               <span className="text-sm font-bold text-primary uppercase tracking-[0.3em]">Latest Updates</span>
             </div>
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground font-headline mb-6 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground font-headline mb-6 tracking-tight">
               News & Announcements
             </h2>
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl">
+            <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-3xl">
               Stay informed about the latest developments and initiatives
             </p>
           </div>
@@ -378,16 +420,16 @@ export default function Home() {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
 
                       {/* Content overlay at bottom */}
-                      <div className="absolute bottom-0 left-0 right-0 p-12">
+                      <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 lg:p-12">
                         <div className="mb-6">
                           <span className="inline-block px-6 py-2.5 bg-primary text-white text-sm font-bold uppercase tracking-[0.2em] border-2 border-primary hover:bg-transparent hover:text-primary transition-all duration-500">
                             Featured Story
                           </span>
                         </div>
-                        <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white font-headline mb-6 leading-tight">
+                        <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white font-headline mb-6 leading-tight">
                           <Balancer>{item.title}</Balancer>
                         </h3>
-                        <p className="text-xl text-white/95 mb-8 line-clamp-2 leading-relaxed max-w-3xl">
+                        <p className="text-base sm:text-lg md:text-xl text-white/95 mb-6 md:mb-8 line-clamp-2 leading-relaxed max-w-3xl">
                           {item.snippet}
                         </p>
                         <div className="flex items-center gap-6 text-white/90 text-base">
@@ -451,7 +493,7 @@ export default function Home() {
           </div>
 
           {/* Bottom Row - 3 Equal Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {news.slice(3, 6).map((item, idx) => {
               const image = newsImages.find(img => img.id === `news-${item.id}`) || newsImages[0];
               return (
@@ -513,7 +555,7 @@ export default function Home() {
       </section>
 
       {/* Featured Tenders - Premium Design */}
-      <section className="py-32 bg-white relative overflow-hidden">
+      <section className="py-16 md:py-24 lg:py-32 bg-white relative overflow-hidden">
         {/* Subtle background pattern */}
         <div className="absolute inset-0 opacity-[0.02]">
           <div className="absolute inset-0" style={{
@@ -529,16 +571,16 @@ export default function Home() {
               <FileText className="h-5 w-5 text-primary" strokeWidth={2.5} />
               <span className="text-sm font-bold text-primary uppercase tracking-[0.3em]">Current Opportunities</span>
             </div>
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground font-headline mb-6 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground font-headline mb-6 tracking-tight">
               Open Tenders
             </h2>
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl">
+            <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-3xl">
               Explore procurement opportunities and submit your proposals
             </p>
           </div>
 
           {/* Premium Grid Layout - 3 Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16">
             {tenders.slice(0, 3).map((tender, index) => (
               <Link
                 key={tender.id}
@@ -554,7 +596,7 @@ export default function Home() {
                   <div className="h-2 bg-gradient-to-r from-primary to-accent"></div>
 
                   {/* Content */}
-                  <div className="relative p-10">
+                  <div className="relative p-6 md:p-8 lg:p-10">
                     {/* Category Badge */}
                     <div className="mb-8">
                       <span className="inline-block px-5 py-2 bg-primary/10 text-primary text-xs font-bold uppercase tracking-[0.2em] border-2 border-primary/20 group-hover:border-primary/40 transition-all duration-500">
@@ -624,7 +666,7 @@ export default function Home() {
       </section>
 
       {/* Quick Links / Resources - Premium Design */}
-      <section className="py-32 bg-gradient-to-br from-primary/5 via-background to-accent/5 relative overflow-hidden">
+      <section className="py-16 md:py-24 lg:py-32 bg-gradient-to-br from-primary/5 via-background to-accent/5 relative overflow-hidden">
         {/* Subtle background pattern */}
         <div className="absolute inset-0 opacity-[0.02]">
           <div className="absolute inset-0" style={{
@@ -640,16 +682,16 @@ export default function Home() {
               <BookOpen className="h-5 w-5 text-primary" strokeWidth={2.5} />
               <span className="text-sm font-bold text-primary uppercase tracking-[0.3em]">Resources</span>
             </div>
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground font-headline mb-6 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground font-headline mb-6 tracking-tight">
               Essential Documents
             </h2>
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
               Access templates, policies, and reports for procurement processes
             </p>
           </div>
 
           {/* Clean Resource Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
             {quickLinks.map((link, index) => (
               <Link
                 key={link.title}
@@ -657,7 +699,7 @@ export default function Home() {
                 className="group"
                 style={{ animation: `fadeInUp 0.8s ease-out ${index * 0.1}s both` }}
               >
-                <article className="h-full bg-white border-2 border-border hover:border-primary transition-all duration-700 overflow-hidden p-10 hover:shadow-2xl">
+                <article className="h-full bg-white border-2 border-border hover:border-primary transition-all duration-700 overflow-hidden p-6 md:p-8 lg:p-10 hover:shadow-2xl">
                   {/* Animated gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-transparent group-hover:from-primary/5 group-hover:via-primary/3 group-hover:to-transparent transition-all duration-700 pointer-events-none"></div>
 
@@ -697,7 +739,7 @@ export default function Home() {
       </section>
 
       {/* Call to Action - Premium Section */}
-      <section className="relative py-32 bg-white overflow-hidden">
+      <section className="relative py-16 md:py-24 lg:py-32 bg-white overflow-hidden">
         {/* Subtle background pattern */}
         <div className="absolute inset-0 opacity-[0.02]">
           <div className="absolute inset-0" style={{
@@ -713,7 +755,7 @@ export default function Home() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-6xl mx-auto">
             {/* Premium bordered container */}
-            <div className="relative bg-white border-2 border-border hover:border-primary/40 transition-all duration-700 p-16 md:p-20 overflow-hidden group">
+            <div className="relative bg-white border-2 border-border hover:border-primary/40 transition-all duration-700 p-8 md:p-16 lg:p-20 overflow-hidden group">
               {/* Animated gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-transparent group-hover:from-primary/5 group-hover:via-primary/3 group-hover:to-transparent transition-all duration-700"></div>
 
@@ -726,7 +768,7 @@ export default function Home() {
                   <span className="text-sm font-bold text-primary uppercase tracking-[0.3em]">Get Involved</span>
                 </div>
 
-                <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground font-headline leading-tight">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground font-headline leading-tight">
                   <Balancer>
                     Ready to Participate in Our{' '}
                     <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
@@ -735,7 +777,7 @@ export default function Home() {
                   </Balancer>
                 </h2>
 
-                <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+                <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
                   <Balancer>
                     Join us in building a transparent and accountable Kano State through open and fair procurement
                   </Balancer>
@@ -759,7 +801,7 @@ export default function Home() {
                 </div>
 
                 {/* Trust indicators */}
-                <div className="grid grid-cols-3 gap-8 pt-16 border-t-2 border-border mt-16">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 pt-12 md:pt-16 border-t-2 border-border mt-12 md:mt-16">
                   {[
                     { icon: Shield, label: 'Transparent', value: '100%' },
                     { icon: CheckCircle2, label: 'Verified', value: 'Secure' },
