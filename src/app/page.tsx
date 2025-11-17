@@ -105,7 +105,7 @@ export default function Home() {
             {/* Badge */}
             <div className="inline-flex items-center gap-2.5 px-5 py-2.5 bg-white/15 backdrop-blur-md rounded-full border border-white/30 mb-10 shadow-lg">
               <div className="h-2.5 w-2.5 rounded-full bg-primary animate-pulse shadow-lg shadow-primary/50"></div>
-              <span className="text-sm md:text-base font-semibold text-white tracking-wide">Kano State Ministry for Public Procurement, Project Monitoring and Evaluation</span>
+              <span className="text-sm md:text-base font-semibold text-white tracking-wide">Hon Nura Iro Ma'aji Phd - Kano State Ministry for Public Procurement, Project Monitoring and Evaluation</span>
             </div>
 
             {/* Main Heading */}

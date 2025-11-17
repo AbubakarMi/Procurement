@@ -32,6 +32,7 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
   email: z.string().email({ message: 'Please enter a valid email address.' }),
+  complaintLocation: z.string().min(5, { message: 'Location must be at least 5 characters.' }),
   category: z.string().min(1, { message: 'Please select a category.' }),
   description: z.string().min(20, { message: 'Description must be at least 20 characters.' }),
   // file: z.any().optional(),
@@ -54,6 +55,7 @@ export default function ComplaintForm() {
     defaultValues: {
       name: '',
       email: '',
+      complaintLocation: '',
       category: '',
       description: '',
     },
@@ -147,6 +149,19 @@ export default function ComplaintForm() {
                 )}
               />
             </div>
+            <FormField
+              control={form.control}
+              name="complaintLocation"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Location of Complaint</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Enter the address/location where the issue occurred" {...field} className="bg-card" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             <FormField
               control={form.control}
               name="category"
