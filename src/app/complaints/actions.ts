@@ -66,14 +66,18 @@ export async function submitComplaint(
 
     // 3. Send confirmation email
     try {
-      console.log("📧 Sending confirmation email...");
-      await sendComplaintConfirmationEmail({
+      console.log("📧 Sending confirmation email to:", data.email);
+      const emailResult = await sendComplaintConfirmationEmail({
         ...data,
         trackingId: complaint.trackingId,
       });
-      console.log("✅ Confirmation email sent");
+      console.log("✅ Confirmation email sent successfully:", emailResult);
     } catch (emailError) {
-      console.warn("⚠️ Email sending failed (complaint still saved):", emailError);
+      console.error("⚠️ Email sending failed (complaint still saved):", emailError);
+      if (emailError instanceof Error) {
+        console.error("Email error message:", emailError.message);
+        console.error("Email error stack:", emailError.stack);
+      }
       // Don't fail the entire submission if email fails
     }
 
@@ -142,8 +146,11 @@ export async function getStats() {
 
 export async function sendComplaintConfirmationEmail(data: ComplaintData) {
   try {
-    await resend.emails.send({
-      from: 'Ministry for Public Procurement <noreply@procurement.kn.gov.ng>',
+    console.log("📧 Preparing to send email to:", data.email);
+    console.log("📧 Tracking ID:", data.trackingId);
+
+    const result = await resend.emails.send({
+      from: 'Ministry for Public Procurement <onboarding@resend.dev>',
       to: data.email,
       subject: 'Complaint Received - Tracking ID: ' + data.trackingId,
       html: `
@@ -282,9 +289,14 @@ export async function sendComplaintConfirmationEmail(data: ComplaintData) {
       `,
     });
 
-    return { success: true };
+    console.log("✅ Email sent successfully! Result:", result);
+    return { success: true, result };
   } catch (error) {
-    console.error('Error sending confirmation email:', error);
+    console.error('❌ Error sending confirmation email:', error);
+    if (error instanceof Error) {
+      console.error('Error message:', error.message);
+      console.error('Error stack:', error.stack);
+    }
     throw new Error('Failed to send confirmation email');
   }
 }

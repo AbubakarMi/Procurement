@@ -11,7 +11,9 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "db:init": "tsx scripts/init-db.ts",
-    "db:setup": "node scripts/direct-init-db.js"
+    "db:setup": "node scripts/direct-init-db.js",
+    "db:test": "node scripts/test-db-connection.js",
+    "complaint:add-test": "node scripts/add-test-complaint.js"
   },
   "dependencies": {
     "@genkit-ai/google-genai": "^1.20.0",

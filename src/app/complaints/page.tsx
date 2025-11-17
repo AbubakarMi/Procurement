@@ -1,7 +1,6 @@
-import { Search, ListChecks, Hourglass, FilePlus2 } from 'lucide-react';
+import { ListChecks, Hourglass, FilePlus2 } from 'lucide-react';
 import ComplaintForm from './complaint-form';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+import TrackComplaint from './track-complaint';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { faqs, complaintStats } from '@/lib/data';
 
@@ -111,37 +110,7 @@ export default function ComplaintPage() {
               {/* Right Column - Sidebar */}
               <div className="space-y-8">
                 {/* Track Complaint */}
-                <article className="bg-white border border-border hover:border-primary/50 transition-all duration-500 overflow-hidden">
-                  {/* Top colored bar */}
-                  <div className="h-2 bg-primary"></div>
-
-                  <div className="p-8">
-                    {/* Icon and Title */}
-                    <div className="flex items-center gap-4 mb-6">
-                      <div className="p-3 bg-primary/10 border border-primary/20">
-                        <Search className="h-6 w-6 text-primary" />
-                      </div>
-                      <h3 className="text-2xl font-bold text-foreground font-headline">
-                        Track Complaint
-                      </h3>
-                    </div>
-
-                    <p className="text-base text-muted-foreground mb-6">
-                      Enter your tracking ID to check the status of your complaint.
-                    </p>
-
-                    <div className="flex gap-2">
-                      <Input
-                        type="text"
-                        placeholder="Enter Tracking ID"
-                        className="h-12 text-base border-border focus:border-primary"
-                      />
-                      <Button className="h-12 px-6 bg-primary hover:bg-primary/90">
-                        <Search className="h-5 w-5" />
-                      </Button>
-                    </div>
-                  </div>
-                </article>
+                <TrackComplaint />
 
                 {/* FAQs */}
                 <article className="bg-white border border-border hover:border-primary/50 transition-all duration-500 overflow-hidden">

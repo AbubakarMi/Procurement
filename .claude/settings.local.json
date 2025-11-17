@@ -14,7 +14,8 @@
       "Bash(sc query:*)",
       "Bash(node scripts/direct-init-db.js:*)",
       "Bash(netstat:*)",
-      "Bash(node scripts/test-db-connection.js:*)"
+      "Bash(node scripts/test-db-connection.js:*)",
+      "Bash(node scripts/add-test-complaint.js:*)"
     ],
     "deny": [],
     "ask": []
