@@ -86,95 +86,102 @@ export default function Home() {
 
   return (
     <div className="flex flex-col">
-      {/* Hero Section - World Class Premium Design */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Background Images with Crossfade */}
+      {/* Hero Section - Ultra Premium World Class Design */}
+      <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
+        {/* Background Images with Smooth Crossfade */}
         {heroImages.map((imageSrc, index) => (
           <div
             key={imageSrc}
-            className={`absolute inset-0 z-0 transition-opacity duration-1000 ${
-              index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+            className={`absolute inset-0 z-0 transition-all duration-[2000ms] ease-in-out ${
+              index === currentImageIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
             }`}
           >
             <Image
               src={imageSrc}
               alt={`Hero image ${index + 1}`}
               fill
-              className="object-cover scale-105"
+              className="object-cover"
               priority={index === 0}
             />
-            {/* Dark Overlay for text readability */}
-            <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/50"></div>
+            {/* Simple Dark Overlay for Text Readability Only */}
+            <div className="absolute inset-0 bg-black/50"></div>
           </div>
         ))}
 
-        {/* Animated gradient orbs */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-[fadeIn_2s_ease-out] z-0"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-accent/20 rounded-full blur-3xl animate-[fadeIn_2s_ease-out_0.5s_both] z-0"></div>
+        {/* Content Container */}
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32 lg:py-40 relative z-10">
+          <div className="max-w-7xl mx-auto">
 
-        {/* Content Overlay */}
-        <div className="container mx-auto px-4 py-20 md:py-32 relative z-10">
-          <div className="max-w-6xl">
-            {/* Premium Badge */}
-            <div
-              className="inline-flex items-center gap-3 px-6 py-3 bg-white/10 backdrop-blur-xl border-2 border-white/30 hover:border-white/50 transition-all duration-500 group mb-12"
-              style={{ animation: 'fadeInUp 0.8s ease-out' }}
-            >
-              <Sparkles className="h-5 w-5 text-primary group-hover:rotate-12 transition-transform duration-500" strokeWidth={2.5} />
-              <span className="text-sm md:text-base font-bold text-white tracking-wide">Hon Nura Iro Ma'aji PhD</span>
-              <div className="h-5 w-px bg-white/30"></div>
-              <span className="text-sm md:text-base font-semibold text-white/90">Commissioner, Kano State Ministry for Public Procurement</span>
-            </div>
+            {/* Main Heading - Ultra Premium Typography */}
+            <div className="space-y-8 md:space-y-12 mb-12 md:mb-16" style={{ animation: 'fadeInUp 0.8s ease-out 0.1s both' }}>
+              {/* Commissioner Badge - Clean and Prominent */}
+              <div className="inline-flex items-center gap-3 md:gap-4 px-5 md:px-6 py-3 md:py-3.5 bg-white/20 backdrop-blur-md border-2 border-white/30 mb-6 md:mb-8">
+                <Sparkles className="h-4 w-4 md:h-5 md:w-5 text-white" strokeWidth={2.5} />
+                <span className="text-sm md:text-base font-bold text-white tracking-wide">Hon Nura Iro Ma'aji PhD</span>
+                <div className="h-5 md:h-6 w-px bg-white/40"></div>
+                <span className="text-xs md:text-sm font-semibold text-white/90">Commissioner</span>
+              </div>
 
-            {/* Main Heading - Ultra Premium */}
-            <div className="space-y-10 mb-16" style={{ animation: 'fadeInUp 0.8s ease-out 0.1s both' }}>
-              <div className="space-y-6">
-                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white font-headline leading-[0.9] tracking-tighter">
-                  <span className="block">Transparent</span>
-                  <span className="block bg-gradient-to-r from-primary via-primary to-accent bg-clip-text text-transparent drop-shadow-2xl">
-                    Procurement
+              <div className="space-y-6 md:space-y-8">
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-black text-white font-headline leading-[0.85] tracking-tighter drop-shadow-2xl">
+                  <span className="block mb-2 md:mb-3">
+                    <span className="inline-block animate-[slideInLeft_0.8s_ease-out_0.2s_both]">Transparent</span>
                   </span>
-                  <span className="block text-white/95">for Kano's Future</span>
+                  <span className="block mb-2 md:mb-3 relative">
+                    <span className="inline-block text-primary animate-[slideInRight_0.8s_ease-out_0.3s_both] drop-shadow-[0_0_30px_rgba(227,66,52,0.8)]">
+                      Procurement
+                    </span>
+                  </span>
+                  <span className="block">
+                    <span className="inline-block text-white animate-[slideInLeft_0.8s_ease-out_0.4s_both]">for Kano's Future</span>
+                  </span>
                 </h1>
-                <div className="flex items-center gap-4">
-                  <div className="h-2 w-32 bg-primary shadow-lg shadow-primary/50"></div>
-                  <div className="h-1.5 w-24 bg-white/40"></div>
-                  <div className="h-1 w-16 bg-white/20"></div>
+
+                {/* Premium Accent Lines */}
+                <div className="flex items-center gap-3 md:gap-4" style={{ animation: 'fadeInUp 0.8s ease-out 0.5s both' }}>
+                  <div className="h-1 md:h-1.5 w-20 md:w-32 bg-primary shadow-2xl shadow-primary/60"></div>
+                  <div className="h-1 w-16 md:w-24 bg-white/80"></div>
+                  <div className="h-0.5 w-12 md:w-16 bg-white/50"></div>
                 </div>
               </div>
 
-              {/* Description */}
-              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/95 leading-relaxed max-w-4xl font-light">
-                <Balancer>
-                  Building trust through accountability and transparent governance across all public works
-                </Balancer>
-              </p>
+              {/* Premium Description with Enhanced Typography */}
+              <div className="relative pl-6">
+                <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-white leading-relaxed max-w-4xl font-light drop-shadow-xl">
+                  <Balancer>
+                    Building trust through accountability and transparent governance across all public works
+                  </Balancer>
+                </p>
+                <div className="absolute left-0 top-0 bottom-0 w-1 bg-white"></div>
+              </div>
             </div>
 
-            {/* CTA Buttons - Premium Design */}
+            {/* Premium CTA Buttons with Enhanced Design */}
             <div
-              className="flex flex-col sm:flex-row gap-6 mb-20"
+              className="flex flex-col sm:flex-row gap-4 md:gap-6 mb-16 md:mb-20 lg:mb-24"
               style={{ animation: 'fadeInUp 0.8s ease-out 0.2s both' }}
             >
-              <Button asChild className="h-16 px-12 text-lg font-bold uppercase tracking-[0.2em] relative overflow-hidden group border-0">
+              <Button asChild className="h-14 md:h-16 lg:h-18 px-8 md:px-12 text-base md:text-lg font-bold uppercase tracking-[0.2em] relative overflow-hidden group border-0 shadow-2xl shadow-primary/40 hover:shadow-primary/60 transition-shadow duration-500">
                 <Link href="/procurement" className="flex items-center gap-3">
-                  <Target className="h-6 w-6 relative z-10 group-hover:scale-110 transition-all duration-300" />
+                  <Target className="h-5 w-5 md:h-6 md:w-6 relative z-10 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500" />
                   <span className="relative z-10">Browse Tenders</span>
-                  <ArrowRight className="h-6 w-6 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
-                  <div className="absolute inset-0 bg-accent transform translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
+                  <ArrowRight className="h-5 w-5 md:h-6 md:w-6 relative z-10 group-hover:translate-x-2 transition-transform duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-accent to-accent/80 transform translate-x-full group-hover:translate-x-0 transition-transform duration-700"></div>
+                  <div className="absolute inset-0 bg-primary opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                 </Link>
               </Button>
-              <Button asChild variant="outline" className="h-16 px-12 text-lg font-bold uppercase tracking-[0.2em] border-2 border-white/40 text-white bg-white/10 backdrop-blur-xl hover:bg-white hover:text-primary hover:border-white transition-all duration-500 relative overflow-hidden group">
+              <Button asChild variant="outline" className="h-14 md:h-16 lg:h-18 px-8 md:px-12 text-base md:text-lg font-bold uppercase tracking-[0.2em] border-2 border-white/40 text-white bg-white/10 backdrop-blur-2xl hover:bg-white hover:text-primary hover:border-white transition-all duration-700 relative overflow-hidden group shadow-xl shadow-black/20">
                 <Link href="/projects" className="flex items-center gap-3">
                   <span className="relative z-10">View Projects</span>
-                  <ArrowRight className="h-6 w-6 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
+                  <ArrowRight className="h-5 w-5 md:h-6 md:w-6 relative z-10 group-hover:translate-x-2 transition-transform duration-500" />
+                  <div className="absolute inset-0 bg-white transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700"></div>
                 </Link>
               </Button>
             </div>
 
-            {/* Stats Row - Clean Minimalist */}
+            {/* World-Class Stats Grid - Ultra Premium */}
             <div
-              className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 lg:gap-12"
+              className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:gap-8 max-w-6xl"
               style={{ animation: 'fadeInUp 0.8s ease-out 0.3s both' }}
             >
               {[
@@ -183,28 +190,57 @@ export default function Home() {
                 { value: '98%', label: 'Transparency Rate', icon: Shield },
                 { value: '24/7', label: 'Monitoring', icon: Eye }
               ].map((stat, index) => (
-                <div key={index} className="group text-center">
-                  <div className="relative">
-                    <div className="flex items-baseline justify-center gap-1 mb-3">
-                      <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tabular-nums group-hover:scale-105 transition-transform duration-500">
-                        {stat.value}
-                      </span>
+                <div
+                  key={index}
+                  className="group text-center relative"
+                  style={{ animation: `fadeInUp 0.8s ease-out ${0.4 + index * 0.1}s both` }}
+                >
+                  {/* Icon with animated background */}
+                  <div className="relative inline-flex mb-4 md:mb-6">
+                    <div className="relative p-3 md:p-4 bg-white/10 rounded-full group-hover:bg-white/20 transition-all duration-500 group-hover:scale-110">
+                      <stat.icon className="h-5 w-5 md:h-6 md:w-6 text-white group-hover:rotate-12 transition-transform duration-500" strokeWidth={2.5} />
                     </div>
-                    <div className="h-1 w-16 bg-white/30 mx-auto mb-3 group-hover:w-20 group-hover:bg-primary transition-all duration-500"></div>
-                    <p className="text-sm font-bold text-white/90 uppercase tracking-[0.2em]">{stat.label}</p>
                   </div>
+
+                  {/* Number - Large and Bold */}
+                  <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white tabular-nums mb-3 md:mb-4 drop-shadow-2xl group-hover:scale-105 inline-block transition-transform duration-500">
+                    {stat.value}
+                  </p>
+
+                  {/* Animated Divider */}
+                  <div className="flex justify-center mb-3 md:mb-4">
+                    <div className="relative w-12 h-px bg-white/30 overflow-hidden">
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                    </div>
+                  </div>
+
+                  {/* Label */}
+                  <p className="text-xs md:text-sm font-bold text-white/90 uppercase tracking-[0.15em] group-hover:text-white transition-colors duration-500 leading-tight px-2">
+                    {stat.label}
+                  </p>
+
+                  {/* Bottom accent line */}
+                  <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-transparent via-white to-transparent group-hover:w-full transition-all duration-700"></div>
                 </div>
               ))}
             </div>
           </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-10 animate-bounce">
-          <div className="flex flex-col items-center gap-2">
-            <span className="text-white/60 text-xs font-bold uppercase tracking-wider">Scroll Down</span>
-            <ArrowRight className="h-5 w-5 text-white/60 rotate-90" />
-          </div>
+        {/* Image Progress Indicators */}
+        <div className="absolute bottom-8 right-8 z-10 flex gap-2">
+          {heroImages.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentImageIndex(index)}
+              className={`h-1.5 rounded-full transition-all duration-500 ${
+                index === currentImageIndex
+                  ? 'w-12 bg-white'
+                  : 'w-6 bg-white/30 hover:bg-white/50'
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
         </div>
       </section>
 
@@ -255,22 +291,25 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Impact By Numbers - World Class Design */}
-      <section className="py-16 md:py-24 lg:py-32 bg-gradient-to-br from-primary/5 via-background to-white relative overflow-hidden">
+      {/* Impact By Numbers - Clean Minimal Design */}
+      <section className="relative py-20 md:py-32 lg:py-40 overflow-hidden">
+        {/* Background with gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-accent/5"></div>
+
         {/* Decorative Elements */}
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 right-0 w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-primary/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 left-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-accent/5 rounded-full blur-3xl"></div>
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-7xl mx-auto">
             {/* Header */}
-            <div className="text-center mb-20" style={{ animation: 'fadeInUp 0.8s ease-out' }}>
-              <div className="flex items-center justify-center gap-6 mb-8">
-                <div className="h-px w-20 bg-gradient-to-r from-transparent to-primary"></div>
-                <span className="text-xs font-bold text-primary uppercase tracking-[0.3em]">Our Impact</span>
-                <div className="h-px w-20 bg-gradient-to-l from-transparent to-primary"></div>
+            <div className="text-center mb-16 md:mb-24 lg:mb-32" style={{ animation: 'fadeInUp 0.8s ease-out' }}>
+              <div className="flex items-center justify-center gap-4 md:gap-6 mb-6 md:mb-8">
+                <div className="h-px w-12 md:w-20 bg-gradient-to-r from-transparent to-primary"></div>
+                <span className="text-xs md:text-sm font-bold text-primary uppercase tracking-[0.3em]">Our Impact</span>
+                <div className="h-px w-12 md:w-20 bg-gradient-to-l from-transparent to-primary"></div>
               </div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground font-headline mb-6 tracking-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground font-headline mb-4 md:mb-6 tracking-tight">
                 <Balancer>
                   Impact By{' '}
                   <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
@@ -278,85 +317,69 @@ export default function Home() {
                   </span>
                 </Balancer>
               </h2>
-              <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto">
                 Measurable results driving transparency and accountability
               </p>
             </div>
 
-            {/* Stats Grid - World Class Layout */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
+            {/* Stats Grid - Clean Minimal Layout */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-16 lg:gap-20">
               {stats.map((stat, index) => (
                 <div
                   key={stat.label}
-                  className="group relative"
+                  className="group text-center"
                   style={{ animation: `fadeInUp 0.8s ease-out ${index * 0.15}s both` }}
                 >
-                  {/* Main Content */}
-                  <div className="relative bg-white p-6 md:p-10 lg:p-12 text-center transition-all duration-500 group-hover:shadow-2xl overflow-hidden">
-                    {/* Animated Background */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/0 group-hover:from-primary/10 group-hover:via-primary/5 group-hover:to-transparent transition-all duration-700"></div>
-
-                    {/* Top Border Animation */}
-                    <div className="absolute top-0 left-0 right-0 h-1 overflow-hidden">
-                      <div className="h-full bg-gradient-to-r from-primary to-accent transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-700"></div>
-                    </div>
-
-                    {/* Icon */}
-                    <div className="relative mb-8">
-                      <div className="inline-flex p-5 bg-primary/5 group-hover:bg-primary/10 transition-all duration-500">
-                        <div className="transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
-                          {statIcons[stat.label as keyof typeof statIcons]}
-                        </div>
+                  {/* Icon with animated background */}
+                  <div className="relative inline-flex mb-6 md:mb-8">
+                    <div className="absolute inset-0 bg-primary/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                    <div className="relative p-4 md:p-5 bg-primary/5 rounded-full group-hover:bg-primary/10 transition-all duration-500">
+                      <div className="transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                        {statIcons[stat.label as keyof typeof statIcons]}
                       </div>
-                    </div>
-
-                    {/* Number */}
-                    <div className="relative mb-6">
-                      <p className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-primary tabular-nums leading-none mb-2 transform group-hover:scale-110 transition-transform duration-500">
-                        {stat.value}
-                      </p>
-                    </div>
-
-                    {/* Divider */}
-                    <div className="relative mb-6">
-                      <div className="h-px w-24 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto opacity-30 group-hover:opacity-100 group-hover:w-32 transition-all duration-500"></div>
-                    </div>
-
-                    {/* Label */}
-                    <div className="relative">
-                      <p className="text-lg md:text-xl font-bold text-foreground uppercase tracking-[0.1em] group-hover:text-primary transition-colors duration-500">
-                        {stat.label}
-                      </p>
-                    </div>
-
-                    {/* Bottom Glow */}
-                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-24 bg-primary/0 group-hover:bg-primary/10 blur-2xl transition-all duration-700"></div>
-
-                    {/* Corner Accents */}
-                    <div className="absolute top-0 right-0 w-16 h-16 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                      <div className="absolute top-0 right-0 w-full h-px bg-gradient-to-l from-primary to-transparent"></div>
-                      <div className="absolute top-0 right-0 h-full w-px bg-gradient-to-b from-primary to-transparent"></div>
-                    </div>
-                    <div className="absolute bottom-0 left-0 w-16 h-16 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-primary to-transparent"></div>
-                      <div className="absolute bottom-0 left-0 h-full w-px bg-gradient-to-t from-primary to-transparent"></div>
                     </div>
                   </div>
 
-                  {/* Shadow Element */}
-                  <div className="absolute -bottom-4 -right-4 w-full h-full bg-primary/5 -z-10 transform group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-500"></div>
+                  {/* Number - Large and Bold */}
+                  <div className="mb-4 md:mb-6">
+                    <p className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black text-primary tabular-nums leading-none transform group-hover:scale-105 transition-transform duration-500">
+                      {stat.value}
+                    </p>
+                  </div>
+
+                  {/* Animated Divider */}
+                  <div className="flex justify-center mb-4 md:mb-6">
+                    <div className="relative w-20 md:w-24 h-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent overflow-hidden">
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                    </div>
+                  </div>
+
+                  {/* Label */}
+                  <p className="text-base sm:text-lg md:text-xl font-bold text-foreground uppercase tracking-[0.15em] group-hover:text-primary transition-colors duration-500">
+                    {stat.label}
+                  </p>
+
+                  {/* Bottom accent line */}
+                  <div className="mt-6 md:mt-8">
+                    <div className="h-px w-12 bg-primary/20 mx-auto group-hover:w-20 group-hover:bg-primary/50 transition-all duration-700"></div>
+                  </div>
                 </div>
               ))}
             </div>
 
             {/* Bottom Tagline */}
             <div
-              className="text-center mt-20"
+              className="text-center mt-16 md:mt-24 lg:mt-32"
               style={{ animation: 'fadeInUp 0.8s ease-out 0.6s both' }}
             >
-              <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                Every number represents our commitment to building a transparent and accountable procurement system for Kano State
-              </p>
+              <div className="max-w-4xl mx-auto">
+                <div className="h-px w-full bg-gradient-to-r from-transparent via-primary/20 to-transparent mb-8 md:mb-12"></div>
+                <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground leading-relaxed">
+                  <Balancer>
+                    Every number represents our commitment to building a transparent and accountable procurement system for Kano State
+                  </Balancer>
+                </p>
+              </div>
             </div>
           </div>
         </div>

@@ -152,140 +152,400 @@ export async function sendComplaintConfirmationEmail(data: ComplaintData) {
     const result = await resend.emails.send({
       from: 'Ministry for Public Procurement <onboarding@resend.dev>',
       to: data.email,
-      subject: 'Complaint Received - Tracking ID: ' + data.trackingId,
+      subject: '✓ Complaint Received - Track ID: ' + data.trackingId,
       html: `
         <!DOCTYPE html>
-        <html>
+        <html lang="en">
           <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Complaint Confirmation</title>
             <style>
+              * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+              }
               body {
-                font-family: Arial, sans-serif;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
                 line-height: 1.6;
-                color: #333;
+                color: #1a1a1a;
+                background-color: #f5f5f5;
+                padding: 20px;
+              }
+              .email-container {
                 max-width: 600px;
                 margin: 0 auto;
-                padding: 20px;
+                background-color: #ffffff;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                overflow: hidden;
               }
               .header {
-                background-color: #E34234;
+                background: linear-gradient(135deg, #E34234 0%, #c73528 100%);
                 color: white;
-                padding: 30px 20px;
+                padding: 40px 30px;
                 text-align: center;
-                border-radius: 8px 8px 0 0;
+                position: relative;
+              }
+              .header::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 4px;
+                background: linear-gradient(90deg, #ffffff33 0%, #ffffff 50%, #ffffff33 100%);
+              }
+              .success-icon {
+                width: 64px;
+                height: 64px;
+                background-color: rgba(255, 255, 255, 0.2);
+                border-radius: 50%;
+                margin: 0 auto 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 3px solid rgba(255, 255, 255, 0.3);
+              }
+              .checkmark {
+                width: 32px;
+                height: 32px;
+                border: 3px solid white;
+                border-radius: 50%;
+                display: inline-block;
+                position: relative;
+              }
+              .checkmark::after {
+                content: '';
+                position: absolute;
+                left: 8px;
+                top: 3px;
+                width: 8px;
+                height: 14px;
+                border: solid white;
+                border-width: 0 3px 3px 0;
+                transform: rotate(45deg);
+              }
+              .header h1 {
+                font-size: 28px;
+                font-weight: 700;
+                margin: 0 0 8px 0;
+                letter-spacing: -0.5px;
+              }
+              .header p {
+                font-size: 14px;
+                margin: 0;
+                opacity: 0.95;
+                font-weight: 400;
               }
               .content {
-                background-color: #f9f9f9;
-                padding: 30px;
-                border: 1px solid #e0e0e0;
-                border-top: none;
+                padding: 40px 30px;
+              }
+              .greeting {
+                font-size: 18px;
+                color: #1a1a1a;
+                margin-bottom: 20px;
+                font-weight: 600;
+              }
+              .message {
+                font-size: 15px;
+                color: #4a4a4a;
+                margin-bottom: 30px;
+                line-height: 1.7;
               }
               .tracking-box {
-                background-color: white;
+                background: linear-gradient(135deg, #fff5f4 0%, #ffe8e6 100%);
                 border: 2px solid #E34234;
-                padding: 20px;
-                margin: 20px 0;
-                border-radius: 8px;
+                border-radius: 12px;
+                padding: 24px;
+                margin: 30px 0;
                 text-align: center;
+                box-shadow: 0 2px 8px rgba(227, 66, 52, 0.1);
+              }
+              .tracking-label {
+                font-size: 12px;
+                text-transform: uppercase;
+                letter-spacing: 1.5px;
+                color: #E34234;
+                font-weight: 700;
+                margin-bottom: 12px;
               }
               .tracking-id {
-                font-size: 24px;
-                font-weight: bold;
+                font-size: 28px;
+                font-weight: 800;
                 color: #E34234;
-                font-family: monospace;
-                letter-spacing: 2px;
-              }
-              .info-row {
-                margin: 15px 0;
-                padding: 10px;
+                font-family: 'Courier New', monospace;
+                letter-spacing: 3px;
+                padding: 12px;
                 background-color: white;
+                border-radius: 8px;
+                margin: 12px 0;
+                box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+              }
+              .tracking-note {
+                font-size: 13px;
+                color: #666;
+                margin-top: 12px;
+              }
+              .section-title {
+                font-size: 18px;
+                font-weight: 700;
+                color: #E34234;
+                margin: 30px 0 20px 0;
+                padding-bottom: 10px;
+                border-bottom: 2px solid #E34234;
+              }
+              .detail-card {
+                background-color: #fafafa;
+                border-left: 4px solid #E34234;
+                padding: 16px 20px;
+                margin: 12px 0;
                 border-radius: 4px;
               }
-              .label {
-                font-weight: bold;
+              .detail-label {
+                font-size: 12px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
                 color: #666;
-                display: inline-block;
-                width: 150px;
+                font-weight: 600;
+                margin-bottom: 6px;
+              }
+              .detail-value {
+                font-size: 15px;
+                color: #1a1a1a;
+                font-weight: 500;
+                line-height: 1.6;
+              }
+              .steps-container {
+                background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+                border-radius: 12px;
+                padding: 24px;
+                margin: 24px 0;
+              }
+              .step {
+                display: flex;
+                align-items: flex-start;
+                margin-bottom: 16px;
+                padding-left: 8px;
+              }
+              .step:last-child {
+                margin-bottom: 0;
+              }
+              .step-number {
+                width: 28px;
+                height: 28px;
+                background-color: #E34234;
+                color: white;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 700;
+                font-size: 14px;
+                margin-right: 14px;
+                flex-shrink: 0;
+              }
+              .step-text {
+                font-size: 14px;
+                color: #4a4a4a;
+                padding-top: 4px;
+                line-height: 1.6;
+              }
+              .contact-box {
+                background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+                color: white;
+                padding: 24px;
+                border-radius: 12px;
+                margin: 30px 0;
+              }
+              .contact-title {
+                font-size: 16px;
+                font-weight: 700;
+                margin-bottom: 16px;
+                color: white;
+              }
+              .contact-item {
+                display: flex;
+                align-items: center;
+                margin: 10px 0;
+                font-size: 14px;
+              }
+              .contact-icon {
+                width: 20px;
+                height: 20px;
+                margin-right: 12px;
+                color: #E34234;
+              }
+              .contact-link {
+                color: #ffffff;
+                text-decoration: none;
+                font-weight: 500;
+              }
+              .contact-link:hover {
+                color: #E34234;
+                text-decoration: underline;
               }
               .footer {
-                background-color: #333;
-                color: white;
-                padding: 20px;
+                background-color: #1a1a1a;
+                color: #ffffff;
+                padding: 30px;
                 text-align: center;
+              }
+              .footer-logo {
+                font-size: 16px;
+                font-weight: 700;
+                margin-bottom: 8px;
+                color: white;
+              }
+              .footer-subtitle {
+                font-size: 13px;
+                color: rgba(255, 255, 255, 0.7);
+                margin-bottom: 20px;
+              }
+              .footer-divider {
+                height: 1px;
+                background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%);
+                margin: 20px 0;
+              }
+              .footer-note {
                 font-size: 12px;
-                border-radius: 0 0 8px 8px;
+                color: rgba(255, 255, 255, 0.6);
+                margin-bottom: 16px;
+              }
+              .footer-powered {
+                font-size: 11px;
+                color: rgba(255, 255, 255, 0.5);
+                padding-top: 16px;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+              }
+              .footer-powered a {
+                color: rgba(255, 255, 255, 0.8);
+                text-decoration: none;
+                font-weight: 600;
+                transition: color 0.3s;
+              }
+              .footer-powered a:hover {
+                color: #E34234;
+              }
+              @media only screen and (max-width: 600px) {
+                body {
+                  padding: 10px;
+                }
+                .content {
+                  padding: 24px 20px;
+                }
+                .header {
+                  padding: 30px 20px;
+                }
+                .tracking-id {
+                  font-size: 22px;
+                  letter-spacing: 2px;
+                }
               }
             </style>
           </head>
           <body>
-            <div class="header">
-              <h1 style="margin: 0;">Ministry for Public Procurement</h1>
-              <p style="margin: 10px 0 0 0;">Project Monitoring and Evaluation</p>
-            </div>
-
-            <div class="content">
-              <h2 style="color: #E34234;">Complaint Received Successfully</h2>
-
-              <p>Dear ${data.name},</p>
-
-              <p>Thank you for submitting your complaint. We have received your message and our team will review it promptly.</p>
-
-              <div class="tracking-box">
-                <p style="margin: 0 0 10px 0; color: #666;">Your Tracking ID</p>
-                <div class="tracking-id">${data.trackingId}</div>
-                <p style="margin: 10px 0 0 0; font-size: 12px; color: #666;">
-                  Please save this ID to track your complaint status
-                </p>
+            <div class="email-container">
+              <!-- Header -->
+              <div class="header">
+                <div class="success-icon">
+                  <div class="checkmark"></div>
+                </div>
+                <h1>Complaint Received Successfully!</h1>
+                <p>Ministry for Public Procurement, Project Monitoring and Evaluation</p>
               </div>
 
-              <h3 style="color: #E34234;">Complaint Details:</h3>
+              <!-- Content -->
+              <div class="content">
+                <div class="greeting">Dear ${data.name},</div>
 
-              <div class="info-row">
-                <span class="label">Category:</span>
-                <span>${data.category}</span>
+                <div class="message">
+                  Thank you for taking the time to submit your complaint. Your feedback is valuable to us and helps improve our services. We have successfully received your message and our team will review it promptly.
+                </div>
+
+                <!-- Tracking ID Box -->
+                <div class="tracking-box">
+                  <div class="tracking-label">Your Tracking ID</div>
+                  <div class="tracking-id">${data.trackingId}</div>
+                  <div class="tracking-note">
+                    ⚠️ Please save this ID to track your complaint status online
+                  </div>
+                </div>
+
+                <!-- Complaint Details -->
+                <h2 class="section-title">Complaint Details</h2>
+
+                <div class="detail-card">
+                  <div class="detail-label">Category</div>
+                  <div class="detail-value">${data.category.charAt(0).toUpperCase() + data.category.slice(1).replace('-', ' ')}</div>
+                </div>
+
+                <div class="detail-card">
+                  <div class="detail-label">Location</div>
+                  <div class="detail-value">${data.complaintLocation}</div>
+                </div>
+
+                <div class="detail-card">
+                  <div class="detail-label">Description</div>
+                  <div class="detail-value">${data.description}</div>
+                </div>
+
+                <!-- What Happens Next -->
+                <h2 class="section-title">What Happens Next?</h2>
+
+                <div class="steps-container">
+                  <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-text">Your complaint will be reviewed by our team within <strong>48 hours</strong></div>
+                  </div>
+                  <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-text">We will assign it to the relevant department for investigation</div>
+                  </div>
+                  <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-text">You will receive email updates as we progress with your case</div>
+                  </div>
+                  <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-text">Track your complaint status anytime using your tracking ID</div>
+                  </div>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="contact-box">
+                  <div class="contact-title">📞 Need Assistance?</div>
+                  <div class="contact-item">
+                    <span class="contact-icon">✉</span>
+                    <span>Email: <a href="mailto:info@procurement.kn.gov.ng" class="contact-link">info@procurement.kn.gov.ng</a></span>
+                  </div>
+                  <div class="contact-item">
+                    <span class="contact-icon">📱</span>
+                    <span>Phone: <a href="tel:08065455715" class="contact-link">08065455715</a></span>
+                  </div>
+                  <div class="contact-item">
+                    <span class="contact-icon">📍</span>
+                    <span>Address: 21 Magaji Rumfa Road, Kano, Nigeria</span>
+                  </div>
+                </div>
               </div>
 
-              <div class="info-row">
-                <span class="label">Location:</span>
-                <span>${data.complaintLocation}</span>
+              <!-- Footer -->
+              <div class="footer">
+                <div class="footer-logo">Ministry for Public Procurement</div>
+                <div class="footer-subtitle">Project Monitoring and Evaluation • Kano State, Nigeria</div>
+
+                <div class="footer-divider"></div>
+
+                <div class="footer-note">
+                  This is an automated message. Please do not reply to this email.<br>
+                  For assistance, use the contact information provided above.
+                </div>
+
+                <div class="footer-powered">
+                  Powered by <a href="https://nyra.ai" target="_blank" rel="noopener noreferrer">Nyra</a>
+                </div>
               </div>
-
-              <div class="info-row">
-                <span class="label">Description:</span>
-                <div style="margin-top: 10px;">${data.description}</div>
-              </div>
-
-              <h3 style="color: #E34234; margin-top: 30px;">What Happens Next?</h3>
-
-              <ol style="padding-left: 20px;">
-                <li>Your complaint will be reviewed by our team within 48 hours</li>
-                <li>We will assign it to the relevant department</li>
-                <li>You will receive updates via email as we progress</li>
-                <li>You can track your complaint status using your tracking ID</li>
-              </ol>
-
-              <p style="margin-top: 30px;">
-                If you have any questions, please contact us at:
-                <br>
-                <strong>Email:</strong> info@procurement.kn.gov.ng
-                <br>
-                <strong>Phone:</strong> 08065455715
-                <br>
-                <strong>Address:</strong> 21 Magaji Rumfa Road, Kano
-              </p>
-            </div>
-
-            <div class="footer">
-              <p style="margin: 0;">
-                Ministry for Public Procurement, Project Monitoring and Evaluation
-                <br>
-                Kano State, Nigeria
-              </p>
-              <p style="margin: 10px 0 0 0;">
-                This is an automated message. Please do not reply to this email.
-              </p>
-              <p style="margin: 15px 0 0 0; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 11px; color: rgba(255,255,255,0.6);">
-                Powered by <a href="https://nyra.ai" target="_blank" rel="noopener noreferrer" style="color: rgba(255,255,255,0.8); text-decoration: none; font-weight: 600;">Nyra</a>
-              </p>
             </div>
           </body>
         </html>

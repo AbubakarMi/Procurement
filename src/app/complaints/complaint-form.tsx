@@ -3,7 +3,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
-import { Loader2, Copy, Check } from 'lucide-react';
+import { Loader2, Copy, Check, CheckCircle2, AlertCircle } from 'lucide-react';
 import { useState } from 'react';
 
 import { Button } from '@/components/ui/button';
@@ -28,6 +28,15 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
 import { submitComplaint } from './actions';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from '@/components/ui/alert-dialog';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
@@ -49,6 +58,9 @@ export default function ComplaintForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [result, setResult] = useState<SubmissionResult | null>(null);
   const [copied, setCopied] = useState(false);
+  const [showSuccessAlert, setShowSuccessAlert] = useState(false);
+  const [showErrorAlert, setShowErrorAlert] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const { toast } = useToast();
 
   const copyToClipboard = async (text: string) => {
@@ -100,6 +112,9 @@ export default function ComplaintForm() {
           summary: response.summary,
         });
 
+        // Show success alert popup
+        setShowSuccessAlert(true);
+
         toast({
           title: 'Complaint Submitted Successfully',
           description: `Your tracking ID is ${response.trackingId}. A confirmation email has been sent to ${values.email}.`,
@@ -111,10 +126,14 @@ export default function ComplaintForm() {
       }
     } catch (error) {
       console.error('Submission failed:', error);
+      const errMsg = error instanceof Error ? error.message : 'An error occurred while submitting your complaint. Please try again.';
+      setErrorMessage(errMsg);
+      setShowErrorAlert(true);
+
       toast({
         variant: 'destructive',
         title: 'Submission Failed',
-        description: error instanceof Error ? error.message : 'An error occurred while submitting your complaint. Please try again.',
+        description: errMsg,
       });
     } finally {
       setIsSubmitting(false);
@@ -311,12 +330,18 @@ export default function ComplaintForm() {
               )}
             />
             <FormField
+              control={form.control}
               name="file"
-              render={({ field }) => (
+              render={({ field: { value, onChange, ...fieldProps } }) => (
                 <FormItem>
                   <FormLabel>Attach File (Optional)</FormLabel>
                   <FormControl>
-                     <Input type="file" {...field} className="bg-card" />
+                     <Input
+                       type="file"
+                       {...fieldProps}
+                       onChange={(e) => onChange(e.target.files?.[0])}
+                       className="bg-card"
+                     />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -334,6 +359,94 @@ export default function ComplaintForm() {
           </form>
         </Form>
       </CardContent>
+
+      {/* Success Alert Dialog */}
+      <AlertDialog open={showSuccessAlert} onOpenChange={setShowSuccessAlert}>
+        <AlertDialogContent className="max-w-md">
+          <AlertDialogHeader>
+            <div className="flex justify-center mb-4">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
+                <CheckCircle2 className="w-10 h-10 text-green-600" />
+              </div>
+            </div>
+            <AlertDialogTitle className="text-center text-2xl font-bold text-foreground">
+              Complaint Submitted Successfully!
+            </AlertDialogTitle>
+            <AlertDialogDescription className="text-center text-base space-y-4">
+              <p className="text-muted-foreground">
+                Thank you for your feedback. Your complaint has been received and will be reviewed by our team.
+              </p>
+              {result && (
+                <div className="bg-primary/5 border-2 border-primary/20 rounded-lg p-4">
+                  <p className="text-xs text-muted-foreground uppercase tracking-wider font-semibold mb-2">Your Tracking ID</p>
+                  <div className="flex items-center justify-center gap-2">
+                    <p className="text-xl font-bold text-primary font-mono">{result.trackingId}</p>
+                    <Button
+                      onClick={() => copyToClipboard(result.trackingId)}
+                      variant="ghost"
+                      size="sm"
+                      className="h-8 px-2"
+                    >
+                      {copied ? (
+                        <Check className="h-4 w-4 text-green-600" />
+                      ) : (
+                        <Copy className="h-4 w-4" />
+                      )}
+                    </Button>
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-2">Save this ID to track your complaint status</p>
+                </div>
+              )}
+              <p className="text-sm text-muted-foreground">
+                A confirmation email has been sent to your email address with your tracking ID and next steps.
+              </p>
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogAction
+              onClick={() => setShowSuccessAlert(false)}
+              className="w-full bg-primary hover:bg-primary/90"
+            >
+              Got it, Thanks!
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      {/* Error Alert Dialog */}
+      <AlertDialog open={showErrorAlert} onOpenChange={setShowErrorAlert}>
+        <AlertDialogContent className="max-w-md">
+          <AlertDialogHeader>
+            <div className="flex justify-center mb-4">
+              <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center">
+                <AlertCircle className="w-10 h-10 text-red-600" />
+              </div>
+            </div>
+            <AlertDialogTitle className="text-center text-2xl font-bold text-foreground">
+              Submission Failed
+            </AlertDialogTitle>
+            <AlertDialogDescription className="text-center text-base space-y-4">
+              <p className="text-muted-foreground">
+                We encountered an error while submitting your complaint.
+              </p>
+              <div className="bg-red-50 border-2 border-red-200 rounded-lg p-4">
+                <p className="text-sm text-red-800">{errorMessage}</p>
+              </div>
+              <p className="text-sm text-muted-foreground">
+                Please try again. If the problem persists, contact our support team.
+              </p>
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogAction
+              onClick={() => setShowErrorAlert(false)}
+              className="w-full bg-red-600 hover:bg-red-700"
+            >
+              Close
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </Card>
   );
 }
