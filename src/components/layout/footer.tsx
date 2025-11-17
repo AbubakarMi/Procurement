@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Facebook, Twitter, Linkedin, MapPin, Mail, Phone } from 'lucide-react';
+import { Facebook, Twitter, Linkedin, MapPin, Mail, Phone, Sparkles, ArrowRight } from 'lucide-react';
 import { navLinks } from '@/lib/data';
 
 export function Footer() {
@@ -112,7 +112,7 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/20">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-4">
             <p className="text-sm text-white/80 text-center md:text-left">
               &copy; {new Date().getFullYear()} Ministry for Public Procurement, Project Monitoring and Evaluation. All Rights Reserved.
             </p>
@@ -127,6 +127,21 @@ export function Footer() {
                 Accessibility
               </Link>
             </div>
+          </div>
+
+          {/* Powered by Nyra */}
+          <div className="text-center pt-4 border-t border-white/10">
+            <p className="text-xs text-white/60">
+              Powered by{' '}
+              <a
+                href="https://nyra.ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/80 hover:text-white font-semibold transition-colors"
+              >
+                Nyra
+              </a>
+            </p>
           </div>
         </div>
       </div>

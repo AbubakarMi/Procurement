@@ -283,6 +283,9 @@ export async function sendComplaintConfirmationEmail(data: ComplaintData) {
               <p style="margin: 10px 0 0 0;">
                 This is an automated message. Please do not reply to this email.
               </p>
+              <p style="margin: 15px 0 0 0; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 11px; color: rgba(255,255,255,0.6);">
+                Powered by <a href="https://nyra.ai" target="_blank" rel="noopener noreferrer" style="color: rgba(255,255,255,0.8); text-decoration: none; font-weight: 600;">Nyra</a>
+              </p>
             </div>
           </body>
         </html>
