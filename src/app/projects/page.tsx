@@ -11,7 +11,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { projects } from '@/lib/data';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import ProjectMap from './project-map';
+import MapWrapper from './map-wrapper';
 
 export default function ProjectsPage() {
   const projectImages = PlaceHolderImages.filter((img) => img.id.startsWith('project'));
@@ -126,7 +126,7 @@ export default function ProjectsPage() {
             {/* Map Container */}
             <div className="border border-border overflow-hidden">
               <div className="h-[500px] w-full">
-                <ProjectMap projects={projects} />
+                <MapWrapper projects={projects} />
               </div>
             </div>
           </div>
