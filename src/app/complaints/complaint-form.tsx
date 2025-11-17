@@ -26,7 +26,7 @@ import {
 } from '@/components/ui/select';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
-import { summarizeAndSubmitComplaint } from './actions';
+import { summarizeAndSubmitComplaint, sendComplaintConfirmationEmail } from './actions';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
 const formSchema = z.object({
@@ -67,10 +67,20 @@ export default function ComplaintForm() {
 
     try {
       const response = await summarizeAndSubmitComplaint({ complaintText: values.description });
-      
-      // Simulate submission with other form values
+
+      // Generate tracking ID
       const trackingId = `GOV-${Date.now().toString().slice(-6)}`;
-      
+
+      // Send confirmation email
+      await sendComplaintConfirmationEmail({
+        name: values.name,
+        email: values.email,
+        complaintLocation: values.complaintLocation,
+        category: values.category,
+        description: values.description,
+        trackingId,
+      });
+
       setResult({
         trackingId,
         summary: response.summary,
@@ -78,7 +88,7 @@ export default function ComplaintForm() {
 
       toast({
         title: 'Complaint Submitted Successfully',
-        description: `Your tracking ID is ${trackingId}.`,
+        description: `Your tracking ID is ${trackingId}. A confirmation email has been sent to ${values.email}.`,
       });
 
       form.reset();
