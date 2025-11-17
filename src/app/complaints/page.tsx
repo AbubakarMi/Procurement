@@ -56,23 +56,21 @@ export default async function ComplaintPage() {
                 return (
                   <div
                     key={stat.label}
-                    className={`p-8 text-center group hover:bg-primary/5 transition-all duration-500 ${
+                    className={`group relative bg-white p-8 text-center hover:bg-primary/5 transition-all duration-500 ${
                       index !== complaintStats.length - 1 ? 'md:border-r border-b md:border-b-0 border-border' : ''
                     }`}
                   >
-                    <div className="mb-3">
-                      <p className="text-4xl md:text-5xl font-bold text-foreground group-hover:text-primary transition-colors">
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-primary/10 transition-all duration-500"></div>
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                      <div className={`absolute top-0 left-0 w-full h-0.5 bg-primary transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-700 ${index === 1 ? 'delay-75' : index === 2 ? 'delay-150' : ''}`}></div>
+                    </div>
+
+                    <div className="relative">
+                      <IconComponent className="h-8 w-8 text-primary mb-4 mx-auto group-hover:scale-110 group-hover:rotate-6 transition-all duration-500" strokeWidth={2} />
+                      <p className="text-5xl font-bold text-foreground mb-2 tabular-nums group-hover:text-primary transition-colors duration-500">
                         {stat.value}
                       </p>
-                    </div>
-                    <div className="w-12 h-px bg-primary/30 mx-auto mb-3 group-hover:w-16 group-hover:bg-primary transition-all duration-500"></div>
-                    <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider">{stat.label}</p>
-
-                    {/* Icon - Subtle */}
-                    <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                      <div className="p-2 bg-primary/10 rounded-lg">
-                        <IconComponent className="h-5 w-5 text-primary" />
-                      </div>
+                      <p className="text-xs font-bold text-muted-foreground uppercase tracking-[0.2em]">{stat.label}</p>
                     </div>
                   </div>
                 );

@@ -115,7 +115,7 @@ export default function AboutPage() {
             <span className="text-sm font-semibold text-primary">State Leadership</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-primary font-headline">
-            His Excellency, The Executive Governor
+            His Excellency Alh. Abba Kabir Yusuf
           </h2>
           <p className="text-lg text-muted-foreground mt-4 max-w-2xl mx-auto">
             The visionary leader steering Kano State towards unprecedented development and prosperity
@@ -157,7 +157,7 @@ export default function AboutPage() {
                     </p>
                     <div className="flex items-center gap-3 pt-4 border-t border-primary/20">
                       <div className="h-1 w-8 bg-primary"></div>
-                      <p className="text-sm font-semibold text-primary">His Excellency, The Executive Governor</p>
+                      <p className="text-sm font-semibold text-primary">His Excellency Alh. Abba Kabir Yusuf</p>
                     </div>
                   </div>
                 </CardContent>
@@ -225,8 +225,8 @@ export default function AboutPage() {
                         <div className="h-6 w-1 bg-white"></div>
                         <p className="text-xs text-white/90 font-semibold uppercase tracking-wider">His Excellency</p>
                       </div>
-                      <h3 className="text-2xl md:text-3xl font-bold font-headline">Executive Governor</h3>
-                      <p className="text-sm text-white/80 mt-1">Kano State, Nigeria</p>
+                      <h3 className="text-2xl md:text-3xl font-bold font-headline">Alh. Abba Kabir Yusuf</h3>
+                      <p className="text-sm text-white/80 mt-1">Executive Governor, Kano State</p>
                     </div>
                   </div>
                 </div>
