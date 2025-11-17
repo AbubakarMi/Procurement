@@ -2,7 +2,8 @@ import { ListChecks, Hourglass, FilePlus2 } from 'lucide-react';
 import ComplaintForm from './complaint-form';
 import TrackComplaint from './track-complaint';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { faqs, complaintStats } from '@/lib/data';
+import { faqs } from '@/lib/data';
+import { getStats } from './actions';
 
 const complaintStatIcons: { [key: string]: React.ComponentType<{ className?: string }> } = {
   'Total Submitted': FilePlus2,
@@ -10,7 +11,15 @@ const complaintStatIcons: { [key: string]: React.ComponentType<{ className?: str
   'In Progress': Hourglass,
 };
 
-export default function ComplaintPage() {
+export default async function ComplaintPage() {
+  // Fetch real complaint statistics from database
+  const stats = await getStats();
+
+  const complaintStats = [
+    { label: 'Total Submitted', value: stats.total.toString() },
+    { label: 'Resolved', value: stats.resolved.toString() },
+    { label: 'In Progress', value: stats.inProgress.toString() },
+  ];
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Header Section */}

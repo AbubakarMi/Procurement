@@ -13,7 +13,10 @@
     "db:init": "tsx scripts/init-db.ts",
     "db:setup": "node scripts/direct-init-db.js",
     "db:test": "node scripts/test-db-connection.js",
-    "complaint:add-test": "node scripts/add-test-complaint.js"
+    "complaint:add-test": "node scripts/add-test-complaint.js",
+    "complaint:stats": "node scripts/test-stats.js",
+    "complaint:list": "node scripts/list-complaints.js",
+    "complaint:clear": "node scripts/clear-all-complaints.js"
   },
   "dependencies": {
     "@genkit-ai/google-genai": "^1.20.0",

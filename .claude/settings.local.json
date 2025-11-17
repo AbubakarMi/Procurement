@@ -15,7 +15,11 @@
       "Bash(node scripts/direct-init-db.js:*)",
       "Bash(netstat:*)",
       "Bash(node scripts/test-db-connection.js:*)",
-      "Bash(node scripts/add-test-complaint.js:*)"
+      "Bash(node scripts/add-test-complaint.js:*)",
+      "Bash(node scripts/update-complaint-status.js:*)",
+      "Bash(node scripts/test-stats.js:*)",
+      "Bash(node scripts/clear-all-complaints.js:*)",
+      "Bash(node scripts/list-complaints.js:*)"
     ],
     "deny": [],
     "ask": []

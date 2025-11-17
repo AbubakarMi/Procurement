@@ -6,9 +6,15 @@ const { Client } = require('pg');
 require('dotenv').config({ path: '.env.local' });
 
 function generateTrackingId() {
-  const timestamp = Date.now();
-  const random = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
-  return `GOV-${timestamp.toString().slice(-6)}${random}`;
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const day = String(now.getDate()).padStart(2, '0');
+  const timestamp = now.getTime();
+  const random = Math.floor(Math.random() * 10000);
+  const unique = ((timestamp % 10000) + random) % 10000;
+  const uniqueStr = String(unique).padStart(4, '0');
+  return `KSMPPPME-${year}${month}${day}-${uniqueStr}`;
 }
 
 async function addTestComplaint() {
