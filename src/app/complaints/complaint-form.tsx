@@ -26,7 +26,7 @@ import {
 } from '@/components/ui/select';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
-import { summarizeAndSubmitComplaint, sendComplaintConfirmationEmail } from './actions';
+import { submitComplaint } from './actions';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
 const formSchema = z.object({
@@ -66,38 +66,36 @@ export default function ComplaintForm() {
     setResult(null);
 
     try {
-      const response = await summarizeAndSubmitComplaint({ complaintText: values.description });
-
-      // Generate tracking ID
-      const trackingId = `GOV-${Date.now().toString().slice(-6)}`;
-
-      // Send confirmation email
-      await sendComplaintConfirmationEmail({
+      // Submit complaint using the new backend
+      const response = await submitComplaint({
         name: values.name,
         email: values.email,
         complaintLocation: values.complaintLocation,
         category: values.category,
         description: values.description,
-        trackingId,
       });
 
-      setResult({
-        trackingId,
-        summary: response.summary,
-      });
+      if (response.success) {
+        setResult({
+          trackingId: response.trackingId,
+          summary: response.summary,
+        });
 
-      toast({
-        title: 'Complaint Submitted Successfully',
-        description: `Your tracking ID is ${trackingId}. A confirmation email has been sent to ${values.email}.`,
-      });
+        toast({
+          title: 'Complaint Submitted Successfully',
+          description: `Your tracking ID is ${response.trackingId}. A confirmation email has been sent to ${values.email}.`,
+        });
 
-      form.reset();
+        form.reset();
+      } else {
+        throw new Error('Submission failed');
+      }
     } catch (error) {
       console.error('Submission failed:', error);
       toast({
         variant: 'destructive',
         title: 'Submission Failed',
-        description: 'An error occurred while submitting your complaint. Please try again.',
+        description: error instanceof Error ? error.message : 'An error occurred while submitting your complaint. Please try again.',
       });
     } finally {
       setIsSubmitting(false);
@@ -106,20 +104,79 @@ export default function ComplaintForm() {
 
   if (result) {
     return (
-      <Alert>
-        <AlertTitle className="text-primary text-xl font-bold">Thank You for Your Feedback!</AlertTitle>
-        <AlertDescription className="space-y-4 mt-4">
-          <p>Your complaint has been submitted successfully.</p>
-          <p><strong>Tracking ID:</strong> <span className="font-mono bg-muted px-2 py-1 rounded">{result.trackingId}</span></p>
-          <div>
-            <p><strong>AI-Generated Summary:</strong></p>
-            <blockquote className="mt-2 border-l-2 pl-4 italic text-foreground/80">
-              {result.summary}
-            </blockquote>
+      <Card className="shadow-lg border-2 border-primary/20">
+        <CardContent className="p-0">
+          {/* Success Header */}
+          <div className="bg-primary p-8 text-white text-center">
+            <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <h2 className="text-3xl font-bold font-headline mb-2">Complaint Submitted Successfully!</h2>
+            <p className="text-white/90">Thank you for helping us improve our services</p>
           </div>
-          <Button onClick={() => setResult(null)} className="mt-4">Submit Another Complaint</Button>
-        </AlertDescription>
-      </Alert>
+
+          {/* Content */}
+          <div className="p-8 space-y-6">
+            {/* Tracking ID Box */}
+            <div className="bg-background border-2 border-primary p-6 rounded-lg text-center">
+              <p className="text-sm text-muted-foreground mb-2 uppercase tracking-wider font-semibold">Your Tracking ID</p>
+              <p className="text-3xl font-bold text-primary font-mono tracking-wider mb-2">{result.trackingId}</p>
+              <p className="text-sm text-muted-foreground">Save this ID to track your complaint status</p>
+            </div>
+
+            {/* AI Summary */}
+            <div className="space-y-3">
+              <div className="flex items-center gap-2">
+                <div className="h-1 w-8 bg-primary"></div>
+                <p className="text-sm font-bold text-foreground uppercase tracking-wider">AI-Generated Summary</p>
+              </div>
+              <div className="bg-muted/50 border-l-4 border-l-primary p-6 rounded-r-lg">
+                <p className="text-base text-foreground/90 leading-relaxed italic">
+                  "{result.summary}"
+                </p>
+              </div>
+            </div>
+
+            {/* Next Steps */}
+            <div className="bg-primary/5 p-6 rounded-lg border border-primary/20">
+              <h3 className="text-lg font-bold text-foreground mb-4 flex items-center gap-2">
+                <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                What Happens Next?
+              </h3>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5">✓</span>
+                  <span>A confirmation email has been sent to your email address</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5">✓</span>
+                  <span>Our team will review your complaint within 48 hours</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5">✓</span>
+                  <span>You will receive email updates as we process your complaint</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5">✓</span>
+                  <span>Use your tracking ID to check status anytime</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Action Button */}
+            <Button
+              onClick={() => setResult(null)}
+              className="w-full h-12 text-base font-semibold"
+            >
+              Submit Another Complaint
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
     )
   }
 
