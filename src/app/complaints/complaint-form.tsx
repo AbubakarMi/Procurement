@@ -3,7 +3,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
-import { Loader2 } from 'lucide-react';
+import { Loader2, Copy, Check } from 'lucide-react';
 import { useState } from 'react';
 
 import { Button } from '@/components/ui/button';
@@ -48,7 +48,26 @@ interface SubmissionResult {
 export default function ComplaintForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [result, setResult] = useState<SubmissionResult | null>(null);
+  const [copied, setCopied] = useState(false);
   const { toast } = useToast();
+
+  const copyToClipboard = async (text: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(true);
+      toast({
+        title: 'Copied!',
+        description: 'Tracking ID copied to clipboard',
+      });
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      toast({
+        variant: 'destructive',
+        title: 'Failed to copy',
+        description: 'Please copy the tracking ID manually',
+      });
+    }
+  };
 
   const form = useForm<ComplaintFormValues>({
     resolver: zodResolver(formSchema),
@@ -120,10 +139,30 @@ export default function ComplaintForm() {
           {/* Content */}
           <div className="p-8 space-y-6">
             {/* Tracking ID Box */}
-            <div className="bg-background border-2 border-primary p-6 rounded-lg text-center">
-              <p className="text-sm text-muted-foreground mb-2 uppercase tracking-wider font-semibold">Your Tracking ID</p>
-              <p className="text-3xl font-bold text-primary font-mono tracking-wider mb-2">{result.trackingId}</p>
-              <p className="text-sm text-muted-foreground">Save this ID to track your complaint status</p>
+            <div className="bg-background border-2 border-primary p-6 rounded-lg">
+              <p className="text-sm text-muted-foreground mb-2 uppercase tracking-wider font-semibold text-center">Your Tracking ID</p>
+              <div className="flex items-center justify-center gap-3 mb-2">
+                <p className="text-2xl md:text-3xl font-bold text-primary font-mono tracking-wider">{result.trackingId}</p>
+                <Button
+                  onClick={() => copyToClipboard(result.trackingId)}
+                  variant="outline"
+                  size="sm"
+                  className="h-10 px-3"
+                >
+                  {copied ? (
+                    <>
+                      <Check className="h-4 w-4 mr-1 text-green-600" />
+                      <span className="text-green-600">Copied!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="h-4 w-4 mr-1" />
+                      Copy
+                    </>
+                  )}
+                </Button>
+              </div>
+              <p className="text-sm text-muted-foreground text-center">Save this ID to track your complaint status</p>
             </div>
 
             {/* AI Summary */}
@@ -235,7 +274,7 @@ export default function ComplaintForm() {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Category</FormLabel>
-                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+                  <Select onValueChange={field.onChange} value={field.value}>
                     <FormControl>
                       <SelectTrigger className="bg-card">
                         <SelectValue placeholder="Select a category" />

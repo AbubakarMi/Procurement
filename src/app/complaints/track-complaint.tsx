@@ -1,10 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import { Search, CheckCircle2, Clock, AlertCircle, X } from 'lucide-react';
+import { Search, CheckCircle2, Clock, AlertCircle, X, Copy, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Alert, AlertDescription } from '@/components/ui/alert';
+import { useToast } from '@/hooks/use-toast';
 import { trackComplaint } from './actions';
 
 interface ComplaintDetails {
@@ -21,6 +22,26 @@ export default function TrackComplaint() {
   const [isSearching, setIsSearching] = useState(false);
   const [complaint, setComplaint] = useState<ComplaintDetails | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [copied, setCopied] = useState(false);
+  const { toast } = useToast();
+
+  const copyToClipboard = async (text: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(true);
+      toast({
+        title: 'Copied!',
+        description: 'Tracking ID copied to clipboard',
+      });
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      toast({
+        variant: 'destructive',
+        title: 'Failed to copy',
+        description: 'Please copy manually',
+      });
+    }
+  };
 
   const handleTrack = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -212,12 +233,26 @@ export default function TrackComplaint() {
               <div className="p-4 space-y-4">
                 {/* Tracking ID */}
                 <div className="bg-primary/5 border border-primary/20 p-3 rounded">
-                  <p className="text-xs text-muted-foreground uppercase mb-1">
+                  <p className="text-xs text-muted-foreground uppercase mb-2">
                     Tracking ID
                   </p>
-                  <p className="text-xl font-bold text-primary font-mono">
-                    {complaint.trackingId}
-                  </p>
+                  <div className="flex items-center justify-between gap-2">
+                    <p className="text-lg md:text-xl font-bold text-primary font-mono break-all">
+                      {complaint.trackingId}
+                    </p>
+                    <Button
+                      onClick={() => copyToClipboard(complaint.trackingId)}
+                      variant="outline"
+                      size="sm"
+                      className="h-8 px-2 flex-shrink-0"
+                    >
+                      {copied ? (
+                        <Check className="h-4 w-4 text-green-600" />
+                      ) : (
+                        <Copy className="h-4 w-4" />
+                      )}
+                    </Button>
+                  </div>
                 </div>
 
                 {/* Category */}
