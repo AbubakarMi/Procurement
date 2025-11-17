@@ -58,7 +58,7 @@ export const resources = [
 
 export const staff = [
   { id: 1, name: 'Hon Nura Iro Ma\'aji PhD', role: 'Commissioner', email: 'commissioner@procurement.kn.gov.ng' },
-  { id: 2, name: 'Marcus Thorne', role: 'Director of Procurement', email: 'm.thorne@gov.co' },
+  { id: 2, name: 'Marcus Thorne', role: 'Permanent Secretary', email: 'm.thorne@gov.co' },
   { id: 3, name: 'Lena Petrova', role: 'Head of Project Monitoring', email: 'l.petrova@gov.co' },
   { id: 4, name: 'Samuel Jones', role: 'Chief Financial Officer', email: 's.jones@gov.co' },
   { id: 5, name: 'Aisha Khan', role: 'Head of Communications', email: 'a.khan@gov.co' },
