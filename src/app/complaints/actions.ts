@@ -160,393 +160,272 @@ export async function sendComplaintConfirmationEmail(data: ComplaintData) {
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Complaint Confirmation</title>
-            <style>
-              * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-              }
-              body {
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-                line-height: 1.6;
-                color: #1a1a1a;
-                background-color: #f5f5f5;
-                padding: 20px;
-              }
-              .email-container {
-                max-width: 600px;
-                margin: 0 auto;
-                background-color: #ffffff;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                overflow: hidden;
-              }
-              .header {
-                background: linear-gradient(135deg, #E34234 0%, #c73528 100%);
-                color: white;
-                padding: 40px 30px;
-                text-align: center;
-                position: relative;
-              }
-              .header::after {
-                content: '';
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                height: 4px;
-                background: linear-gradient(90deg, #ffffff33 0%, #ffffff 50%, #ffffff33 100%);
-              }
-              .success-icon {
-                width: 64px;
-                height: 64px;
-                background-color: rgba(255, 255, 255, 0.2);
-                border-radius: 50%;
-                margin: 0 auto 20px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border: 3px solid rgba(255, 255, 255, 0.3);
-              }
-              .checkmark {
-                width: 32px;
-                height: 32px;
-                border: 3px solid white;
-                border-radius: 50%;
-                display: inline-block;
-                position: relative;
-              }
-              .checkmark::after {
-                content: '';
-                position: absolute;
-                left: 8px;
-                top: 3px;
-                width: 8px;
-                height: 14px;
-                border: solid white;
-                border-width: 0 3px 3px 0;
-                transform: rotate(45deg);
-              }
-              .header h1 {
-                font-size: 28px;
-                font-weight: 700;
-                margin: 0 0 8px 0;
-                letter-spacing: -0.5px;
-              }
-              .header p {
-                font-size: 14px;
-                margin: 0;
-                opacity: 0.95;
-                font-weight: 400;
-              }
-              .content {
-                padding: 40px 30px;
-              }
-              .greeting {
-                font-size: 18px;
-                color: #1a1a1a;
-                margin-bottom: 20px;
-                font-weight: 600;
-              }
-              .message {
-                font-size: 15px;
-                color: #4a4a4a;
-                margin-bottom: 30px;
-                line-height: 1.7;
-              }
-              .tracking-box {
-                background: linear-gradient(135deg, #fff5f4 0%, #ffe8e6 100%);
-                border: 2px solid #E34234;
-                border-radius: 12px;
-                padding: 24px;
-                margin: 30px 0;
-                text-align: center;
-                box-shadow: 0 2px 8px rgba(227, 66, 52, 0.1);
-              }
-              .tracking-label {
-                font-size: 12px;
-                text-transform: uppercase;
-                letter-spacing: 1.5px;
-                color: #E34234;
-                font-weight: 700;
-                margin-bottom: 12px;
-              }
-              .tracking-id {
-                font-size: 28px;
-                font-weight: 800;
-                color: #E34234;
-                font-family: 'Courier New', monospace;
-                letter-spacing: 3px;
-                padding: 12px;
-                background-color: white;
-                border-radius: 8px;
-                margin: 12px 0;
-                box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
-              }
-              .tracking-note {
-                font-size: 13px;
-                color: #666;
-                margin-top: 12px;
-              }
-              .section-title {
-                font-size: 18px;
-                font-weight: 700;
-                color: #E34234;
-                margin: 30px 0 20px 0;
-                padding-bottom: 10px;
-                border-bottom: 2px solid #E34234;
-              }
-              .detail-card {
-                background-color: #fafafa;
-                border-left: 4px solid #E34234;
-                padding: 16px 20px;
-                margin: 12px 0;
-                border-radius: 4px;
-              }
-              .detail-label {
-                font-size: 12px;
-                text-transform: uppercase;
-                letter-spacing: 1px;
-                color: #666;
-                font-weight: 600;
-                margin-bottom: 6px;
-              }
-              .detail-value {
-                font-size: 15px;
-                color: #1a1a1a;
-                font-weight: 500;
-                line-height: 1.6;
-              }
-              .steps-container {
-                background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-                border-radius: 12px;
-                padding: 24px;
-                margin: 24px 0;
-              }
-              .step {
-                display: flex;
-                align-items: flex-start;
-                margin-bottom: 16px;
-                padding-left: 8px;
-              }
-              .step:last-child {
-                margin-bottom: 0;
-              }
-              .step-number {
-                width: 28px;
-                height: 28px;
-                background-color: #E34234;
-                color: white;
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-weight: 700;
-                font-size: 14px;
-                margin-right: 14px;
-                flex-shrink: 0;
-              }
-              .step-text {
-                font-size: 14px;
-                color: #4a4a4a;
-                padding-top: 4px;
-                line-height: 1.6;
-              }
-              .contact-box {
-                background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-                color: white;
-                padding: 24px;
-                border-radius: 12px;
-                margin: 30px 0;
-              }
-              .contact-title {
-                font-size: 16px;
-                font-weight: 700;
-                margin-bottom: 16px;
-                color: white;
-              }
-              .contact-item {
-                display: flex;
-                align-items: center;
-                margin: 10px 0;
-                font-size: 14px;
-              }
-              .contact-icon {
-                width: 20px;
-                height: 20px;
-                margin-right: 12px;
-                color: #E34234;
-              }
-              .contact-link {
-                color: #ffffff;
-                text-decoration: none;
-                font-weight: 500;
-              }
-              .contact-link:hover {
-                color: #E34234;
-                text-decoration: underline;
-              }
-              .footer {
-                background-color: #1a1a1a;
-                color: #ffffff;
-                padding: 30px;
-                text-align: center;
-              }
-              .footer-logo {
-                font-size: 16px;
-                font-weight: 700;
-                margin-bottom: 8px;
-                color: white;
-              }
-              .footer-subtitle {
-                font-size: 13px;
-                color: rgba(255, 255, 255, 0.7);
-                margin-bottom: 20px;
-              }
-              .footer-divider {
-                height: 1px;
-                background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%);
-                margin: 20px 0;
-              }
-              .footer-note {
-                font-size: 12px;
-                color: rgba(255, 255, 255, 0.6);
-                margin-bottom: 16px;
-              }
-              .footer-powered {
-                font-size: 11px;
-                color: rgba(255, 255, 255, 0.5);
-                padding-top: 16px;
-                border-top: 1px solid rgba(255, 255, 255, 0.1);
-              }
-              .footer-powered a {
-                color: rgba(255, 255, 255, 0.8);
-                text-decoration: none;
-                font-weight: 600;
-                transition: color 0.3s;
-              }
-              .footer-powered a:hover {
-                color: #E34234;
-              }
-              @media only screen and (max-width: 600px) {
-                body {
-                  padding: 10px;
-                }
-                .content {
-                  padding: 24px 20px;
-                }
-                .header {
-                  padding: 30px 20px;
-                }
-                .tracking-id {
-                  font-size: 22px;
-                  letter-spacing: 2px;
-                }
-              }
-            </style>
           </head>
-          <body>
-            <div class="email-container">
-              <!-- Header -->
-              <div class="header">
-                <div class="success-icon">
-                  <div class="checkmark"></div>
-                </div>
-                <h1>Complaint Received Successfully!</h1>
-                <p>Ministry for Public Procurement, Project Monitoring and Evaluation</p>
-              </div>
+          <body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%); padding: 40px 20px;">
 
-              <!-- Content -->
-              <div class="content">
-                <div class="greeting">Dear ${data.name},</div>
+            <!-- Main Container -->
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width: 650px; margin: 0 auto; background-color: #ffffff; border-radius: 20px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15); overflow: hidden;">
 
-                <div class="message">
-                  Thank you for taking the time to submit your complaint. Your feedback is valuable to us and helps improve our services. We have successfully received your message and our team will review it promptly.
-                </div>
+              <!-- Top Accent Bar -->
+              <tr>
+                <td style="background: linear-gradient(135deg, #E34234 0%, #B8331E 100%); height: 6px;"></td>
+              </tr>
 
-                <!-- Tracking ID Box -->
-                <div class="tracking-box">
-                  <div class="tracking-label">Your Tracking ID</div>
-                  <div class="tracking-id">${data.trackingId}</div>
-                  <div class="tracking-note">
-                    ⚠️ Please save this ID to track your complaint status online
+              <!-- Header Section with Logo Area -->
+              <tr>
+                <td style="background: linear-gradient(135deg, #E34234 0%, #C73528 100%); padding: 50px 40px; text-align: center; position: relative;">
+
+                  <!-- Success Icon -->
+                  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td align="center" style="padding-bottom: 25px;">
+                        <div style="width: 80px; height: 80px; background: rgba(255, 255, 255, 0.2); border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(10px); border: 4px solid rgba(255, 255, 255, 0.3); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);">
+                          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg>
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+
+                  <!-- Title -->
+                  <h1 style="margin: 0 0 12px 0; color: #ffffff; font-size: 32px; font-weight: 800; letter-spacing: -0.5px; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                    Complaint Received!
+                  </h1>
+                  <p style="margin: 0; color: rgba(255, 255, 255, 0.95); font-size: 15px; font-weight: 500; letter-spacing: 0.3px;">
+                    Ministry for Public Procurement, Kano State
+                  </p>
+                </td>
+              </tr>
+
+              <!-- Main Content -->
+              <tr>
+                <td style="padding: 45px 40px;">
+
+                  <!-- Greeting -->
+                  <h2 style="margin: 0 0 20px 0; color: #1a1a1a; font-size: 22px; font-weight: 700;">
+                    Dear ${data.name},
+                  </h2>
+
+                  <p style="margin: 0 0 30px 0; color: #4a4a4a; font-size: 16px; line-height: 1.8;">
+                    Thank you for submitting your complaint. We take your feedback seriously and are committed to addressing your concerns promptly. Your complaint has been successfully received and logged in our system.
+                  </p>
+
+                  <!-- Tracking ID - Premium Box -->
+                  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin: 35px 0;">
+                    <tr>
+                      <td style="background: linear-gradient(135deg, #FFF5F4 0%, #FFE8E6 100%); border: 3px solid #E34234; border-radius: 16px; padding: 32px; text-align: center; box-shadow: 0 4px 20px rgba(227, 66, 52, 0.15);">
+                        <p style="margin: 0 0 16px 0; color: #E34234; font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 2.5px;">
+                          Your Tracking ID
+                        </p>
+                        <div style="background-color: #ffffff; border-radius: 12px; padding: 20px; margin: 0 0 16px 0; box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.06);">
+                          <p style="margin: 0; color: #E34234; font-size: 32px; font-weight: 900; font-family: 'Courier New', monospace; letter-spacing: 4px;">
+                            ${data.trackingId}
+                          </p>
+                        </div>
+                        <p style="margin: 0; color: #666666; font-size: 14px; line-height: 1.6;">
+                          💡 Save this ID to track your complaint status anytime
+                        </p>
+                      </td>
+                    </tr>
+                  </table>
+
+                  <!-- Complaint Summary Section -->
+                  <div style="margin: 40px 0 30px 0;">
+                    <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                      <div style="height: 3px; width: 40px; background-color: #E34234; margin-right: 12px;"></div>
+                      <h3 style="margin: 0; color: #E34234; font-size: 20px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">
+                        Complaint Summary
+                      </h3>
+                    </div>
+
+                    <!-- Category Card -->
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 14px;">
+                      <tr>
+                        <td style="background: linear-gradient(135deg, #FAFAFA 0%, #F5F5F5 100%); border-left: 5px solid #E34234; border-radius: 8px; padding: 18px 22px;">
+                          <p style="margin: 0 0 6px 0; color: #888888; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px;">
+                            Category
+                          </p>
+                          <p style="margin: 0; color: #1a1a1a; font-size: 16px; font-weight: 600; text-transform: capitalize;">
+                            ${data.category.replace('-', ' ')}
+                          </p>
+                        </td>
+                      </tr>
+                    </table>
+
+                    <!-- Location Card -->
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 14px;">
+                      <tr>
+                        <td style="background: linear-gradient(135deg, #FAFAFA 0%, #F5F5F5 100%); border-left: 5px solid #E34234; border-radius: 8px; padding: 18px 22px;">
+                          <p style="margin: 0 0 6px 0; color: #888888; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px;">
+                            Location
+                          </p>
+                          <p style="margin: 0; color: #1a1a1a; font-size: 16px; font-weight: 600;">
+                            ${data.complaintLocation}
+                          </p>
+                        </td>
+                      </tr>
+                    </table>
+
+                    <!-- Description Card -->
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td style="background: linear-gradient(135deg, #FAFAFA 0%, #F5F5F5 100%); border-left: 5px solid #E34234; border-radius: 8px; padding: 18px 22px;">
+                          <p style="margin: 0 0 8px 0; color: #888888; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px;">
+                            Description
+                          </p>
+                          <p style="margin: 0; color: #1a1a1a; font-size: 15px; line-height: 1.7; font-weight: 500;">
+                            ${data.description}
+                          </p>
+                        </td>
+                      </tr>
+                    </table>
                   </div>
-                </div>
 
-                <!-- Complaint Details -->
-                <h2 class="section-title">Complaint Details</h2>
+                  <!-- What Happens Next -->
+                  <div style="margin: 40px 0;">
+                    <div style="display: flex; align-items: center; margin-bottom: 24px;">
+                      <div style="height: 3px; width: 40px; background-color: #E34234; margin-right: 12px;"></div>
+                      <h3 style="margin: 0; color: #E34234; font-size: 20px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">
+                        What Happens Next?
+                      </h3>
+                    </div>
 
-                <div class="detail-card">
-                  <div class="detail-label">Category</div>
-                  <div class="detail-value">${data.category.charAt(0).toUpperCase() + data.category.slice(1).replace('-', ' ')}</div>
-                </div>
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background: linear-gradient(135deg, #F8F9FA 0%, #FFFFFF 100%); border-radius: 16px; padding: 28px; border: 2px solid #E8ECEF;">
+                      <!-- Step 1 -->
+                      <tr>
+                        <td style="padding-bottom: 20px;">
+                          <table cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                              <td style="vertical-align: top; padding-right: 16px;">
+                                <div style="width: 36px; height: 36px; background: linear-gradient(135deg, #E34234 0%, #C73528 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(227, 66, 52, 0.3);">
+                                  <span style="color: #ffffff; font-size: 16px; font-weight: 800;">1</span>
+                                </div>
+                              </td>
+                              <td style="vertical-align: top; padding-top: 6px;">
+                                <p style="margin: 0; color: #2d3436; font-size: 15px; line-height: 1.7; font-weight: 500;">
+                                  Your complaint will be reviewed within <strong style="color: #E34234;">48 hours</strong>
+                                </p>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
 
-                <div class="detail-card">
-                  <div class="detail-label">Location</div>
-                  <div class="detail-value">${data.complaintLocation}</div>
-                </div>
+                      <!-- Step 2 -->
+                      <tr>
+                        <td style="padding-bottom: 20px;">
+                          <table cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                              <td style="vertical-align: top; padding-right: 16px;">
+                                <div style="width: 36px; height: 36px; background: linear-gradient(135deg, #E34234 0%, #C73528 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(227, 66, 52, 0.3);">
+                                  <span style="color: #ffffff; font-size: 16px; font-weight: 800;">2</span>
+                                </div>
+                              </td>
+                              <td style="vertical-align: top; padding-top: 6px;">
+                                <p style="margin: 0; color: #2d3436; font-size: 15px; line-height: 1.7; font-weight: 500;">
+                                  We'll assign it to the relevant department for investigation
+                                </p>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
 
-                <div class="detail-card">
-                  <div class="detail-label">Description</div>
-                  <div class="detail-value">${data.description}</div>
-                </div>
+                      <!-- Step 3 -->
+                      <tr>
+                        <td style="padding-bottom: 20px;">
+                          <table cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                              <td style="vertical-align: top; padding-right: 16px;">
+                                <div style="width: 36px; height: 36px; background: linear-gradient(135deg, #E34234 0%, #C73528 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(227, 66, 52, 0.3);">
+                                  <span style="color: #ffffff; font-size: 16px; font-weight: 800;">3</span>
+                                </div>
+                              </td>
+                              <td style="vertical-align: top; padding-top: 6px;">
+                                <p style="margin: 0; color: #2d3436; font-size: 15px; line-height: 1.7; font-weight: 500;">
+                                  You'll receive email updates as we progress with your case
+                                </p>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
 
-                <!-- What Happens Next -->
-                <h2 class="section-title">What Happens Next?</h2>
+                      <!-- Step 4 -->
+                      <tr>
+                        <td>
+                          <table cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                              <td style="vertical-align: top; padding-right: 16px;">
+                                <div style="width: 36px; height: 36px; background: linear-gradient(135deg, #E34234 0%, #C73528 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(227, 66, 52, 0.3);">
+                                  <span style="color: #ffffff; font-size: 16px; font-weight: 800;">4</span>
+                                </div>
+                              </td>
+                              <td style="vertical-align: top; padding-top: 6px;">
+                                <p style="margin: 0; color: #2d3436; font-size: 15px; line-height: 1.7; font-weight: 500;">
+                                  Track your complaint anytime using your tracking ID
+                                </p>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
 
-                <div class="steps-container">
-                  <div class="step">
-                    <div class="step-number">1</div>
-                    <div class="step-text">Your complaint will be reviewed by our team within <strong>48 hours</strong></div>
-                  </div>
-                  <div class="step">
-                    <div class="step-number">2</div>
-                    <div class="step-text">We will assign it to the relevant department for investigation</div>
-                  </div>
-                  <div class="step">
-                    <div class="step-number">3</div>
-                    <div class="step-text">You will receive email updates as we progress with your case</div>
-                  </div>
-                  <div class="step">
-                    <div class="step-number">4</div>
-                    <div class="step-text">Track your complaint status anytime using your tracking ID</div>
-                  </div>
-                </div>
+                  <!-- Contact Information -->
+                  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin: 35px 0 0 0;">
+                    <tr>
+                      <td style="background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); border-radius: 16px; padding: 32px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);">
+                        <h3 style="margin: 0 0 20px 0; color: #ffffff; font-size: 18px; font-weight: 800;">
+                          📞 Need Assistance?
+                        </h3>
+                        <p style="margin: 0 0 12px 0; color: rgba(255, 255, 255, 0.9); font-size: 15px;">
+                          <strong style="color: #E34234;">Email:</strong>
+                          <a href="mailto:info@procurement.kn.gov.ng" style="color: #ffffff; text-decoration: none; font-weight: 600;">info@procurement.kn.gov.ng</a>
+                        </p>
+                        <p style="margin: 0 0 12px 0; color: rgba(255, 255, 255, 0.9); font-size: 15px;">
+                          <strong style="color: #E34234;">Phone:</strong>
+                          <a href="tel:08065455715" style="color: #ffffff; text-decoration: none; font-weight: 600;">08065455715</a>
+                        </p>
+                        <p style="margin: 0; color: rgba(255, 255, 255, 0.9); font-size: 15px;">
+                          <strong style="color: #E34234;">Address:</strong>
+                          21 Magaji Rumfa Road, Kano, Nigeria
+                        </p>
+                      </td>
+                    </tr>
+                  </table>
 
-                <!-- Contact Information -->
-                <div class="contact-box">
-                  <div class="contact-title">📞 Need Assistance?</div>
-                  <div class="contact-item">
-                    <span class="contact-icon">✉</span>
-                    <span>Email: <a href="mailto:info@procurement.kn.gov.ng" class="contact-link">info@procurement.kn.gov.ng</a></span>
-                  </div>
-                  <div class="contact-item">
-                    <span class="contact-icon">📱</span>
-                    <span>Phone: <a href="tel:08065455715" class="contact-link">08065455715</a></span>
-                  </div>
-                  <div class="contact-item">
-                    <span class="contact-icon">📍</span>
-                    <span>Address: 21 Magaji Rumfa Road, Kano, Nigeria</span>
-                  </div>
-                </div>
-              </div>
+                </td>
+              </tr>
 
               <!-- Footer -->
-              <div class="footer">
-                <div class="footer-logo">Ministry for Public Procurement</div>
-                <div class="footer-subtitle">Project Monitoring and Evaluation • Kano State, Nigeria</div>
+              <tr>
+                <td style="background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%); padding: 40px; text-align: center; border-top: 3px solid #E34234;">
+                  <h4 style="margin: 0 0 8px 0; color: #ffffff; font-size: 18px; font-weight: 800;">
+                    Ministry for Public Procurement
+                  </h4>
+                  <p style="margin: 0 0 24px 0; color: rgba(255, 255, 255, 0.7); font-size: 14px; font-weight: 500;">
+                    Project Monitoring and Evaluation • Kano State, Nigeria
+                  </p>
 
-                <div class="footer-divider"></div>
+                  <!-- Divider -->
+                  <div style="height: 1px; background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%); margin: 24px 0;"></div>
 
-                <div class="footer-note">
-                  This is an automated message. Please do not reply to this email.<br>
-                  For assistance, use the contact information provided above.
-                </div>
+                  <p style="margin: 0 0 20px 0; color: rgba(255, 255, 255, 0.6); font-size: 13px; line-height: 1.6;">
+                    This is an automated message. Please do not reply to this email.<br>
+                    For assistance, use the contact information provided above.
+                  </p>
 
-                <div class="footer-powered">
-                  Powered by <a href="https://nyra.ai" target="_blank" rel="noopener noreferrer">Nyra</a>
-                </div>
-              </div>
-            </div>
+                  <p style="margin: 0; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.5); font-size: 12px;">
+                    Powered by <a href="https://nyra.ai" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; font-weight: 700;">Nyra</a>
+                  </p>
+                </td>
+              </tr>
+
+            </table>
+
           </body>
         </html>
       `,
