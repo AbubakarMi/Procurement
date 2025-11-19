@@ -143,7 +143,7 @@ export default function TrackComplaint() {
             <form onSubmit={handleTrack} className="space-y-3">
               <Input
                 type="text"
-                placeholder="GOV-123456"
+                placeholder="KSMPPPME-XXXXXXXX-XXXX"
                 value={trackingId}
                 onChange={(e) => setTrackingId(e.target.value)}
                 className="h-12 text-base"
